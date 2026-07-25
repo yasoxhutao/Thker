@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ذكِر ᯓ★</title>
+    <style>
+        :root {
+            --color1: #D8B9EF; --color2: #C6B9F0; --color3: #EAB9F0;
+            --color4: #B9BDF0; --color5: #F0B9D9; --white: #ffffff;
+        }
+/* نجوم متوهجة في الخلفية */
+body::before {
+    content: "✶"; position: fixed; top: 15%; left: 10%; color: var(--color5); opacity: 0.4; font-size: 2rem; filter: blur(1px); animation: blink 3s infinite;
+}
+body::after {
+    content: "✧"; position: fixed; bottom: 20%; right: 10%; color: var(--color1); opacity: 0.3; font-size: 1.5rem; animation: blink 4s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            background-color: #fffcfd; margin: 0; padding: 0; color: #7a6a85;
+            background-image: radial-gradient(#f9f0f6 1px, transparent 1px);
+            background-size: 25px 20px;
+        }
+
+        .top-bar {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 15px 30px; position: fixed; top: 0; width: 100%; z-index: 1000;
+            box-sizing: border-box; border-bottom: 1.5px solid var(--color5);
+        }
+
+        .site-title { font-size: 1.7rem; font-weight: bold; color: var(--color5); letter-spacing: 2px; }
+
+        .container { max-width: 480px; margin: 120px auto 50px; padding: 20px; }
+
+        .card {
+            background: var(--white);
+            border: 2px solid var(--color4);
+            border-radius: 20px; margin-bottom: 35px;
+            overflow: hidden; box-shadow: 8px 8px 0px var(--color1);
+        }
+
+        .card-header { background: var(--color4); padding: 12px; display: flex; gap: 8px; }
+        .dot { width: 11px; height: 11px; background: white; border-radius: 50%; opacity: 0.6; }
+
+.bow-divider {
+            margin: 20px 0; color: var(--color5); font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .bow-divider::before, .bow-divider::after {
+            content: ""; flex: 1; height: 1.5px; background: linear-gradient(to right, transparent, var(--color5), transparent);
+        }
+
+        .card-body { padding: 30px 20px; text-align: center; }
+
+        .no-border-card { text-align: center; margin-bottom: 40px; padding: 15px; border: none; background: none; }
+
+        .btn-count {
+            background-color: var(--color2); color: white; border: none; padding: 16px; 
+            width: 100%; border-radius: 15px; font-size: 1.1rem; cursor: pointer;
+            box-shadow: 0 5px 0px #b1a4db; font-weight: bold;
+        }
+        .btn-count:active { transform: translateY(3px); box-shadow: none; }
+
+.btn-count::after {
+    content: "✶"; position: absolute; top: -10px; left: -10px; color: var(--color3); font-size: 1.2rem; opacity: 0; transition: 0.3s;
+}
+.btn-count:hover::after {
+    opacity: 1; transform: rotate(20deg);
+}
+
+
+        .btn-reset {
+            background: none; border: 1.2px solid var(--color5);
+            color: var(--color5); padding: 7px 20px; margin-top: 15px;
+            border-radius: 10px; cursor: pointer; font-size: 0.8rem; display: inline-block;
+        }
+
+        .more-details { 
+            display: block; margin-top: 20px; color: var(--color1); 
+            cursor: pointer; text-decoration: underline; font-size: 0.85rem; 
+        }
+
+        /* نافذة التفاصيل */
+        .modal {
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+        }
+        .modal-window {
+            background-color: white; margin: 15% auto; border-radius: 20px; 
+            width: 85%; max-width: 420px; border: 2px solid var(--color1);
+            box-shadow: 8px 8px 0px var(--color1); overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-header { background: var(--color1); padding: 12px; display: flex; gap: 8px; align-items: center; }
+        .modal-body {
+            padding: 25px; max-height: 50vh; overflow-y: auto;
+            text-align: justify; line-height: 1.8; color: #7a6a85;
+        }
+        .modal-body::-webkit-scrollbar { width: 4px; }
+        .modal-body::-webkit-scrollbar-thumb { background: var(--color1); border-radius: 10px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #sidebar {
+            position: fixed; top: 0; right: -300px; width: 260px; height: 100%;
+            background: var(--white); border-left: 2px solid var(--color5);
+            transition: 0.4s; z-index: 1001; padding-top: 80px;
+        }
+        #sidebar a { display: block; padding: 20px 30px; color: #8a7a95; text-decoration: none; border-bottom: 1px solid #f9f0f6; cursor: pointer; }
+
+        .hidden { display: none; }
+        .back-btn { background: none; color: var(--color4); border: 1.5px solid var(--color4); padding: 8px 18px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; }
+        
+        
+        
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="site-title">ᯓ★ ذكِر</div>
+        <div style="cursor:pointer; font-size: 24px; color: var(--color5);" onclick="toggleMenu()">𝜗ৎ</div>
+    </div>
+
+    <div id="sidebar">
+        <a onclick="showSection('home')">.✦ الرئيسية</a>
+        <a onclick="showSection('morning')">⊹ ࣪ ˖ أذكار الصباح</a>
+        <a onclick="showSection('evening')">࣪ ִֶָ☾. أذكار المساء</a>
+        <a onclick="showSection('sleep')">ᥫ᭡ أذكار النوم</a>
+        <a onclick="showSection('general')">★ عام</a>
+    </div>
+
+    <div class="container">
+        <section id="home">
+            <div style="text-align:center; margin-bottom:45px;">
+                <h2 style="color: var(--color5);">مرحباً بكِ ᥫ᭡</h2>
+                <div style="color:var(--color5)">────୨ৎ────</div>
+            </div>
+            
+            <div class="card" onclick="showSection('morning')" style="cursor: pointer;">
+                <div class="card-header"><div class="dot"></div><div class="dot"></div></div>
+                <div class="card-body"><h3>أذكار الصباح 𑣲</h3></div>
+            </div>
+            <div class="card" onclick="showSection('evening')" style="cursor: pointer;">
+                <div class="card-header" style="background:var(--color1)"><div class="dot"></div><div class="dot"></div></div>
+                <div class="card-body"><h3>أذكار المساء ☾</h3></div>
+            </div>
+            <div class="card" onclick="showSection('sleep')" style="cursor: pointer;">
+                <div class="card-header" style="background:var(--color2)"><div class="dot"></div><div class="dot"></div></div>
+                <div class="card-body"><h3>أذكار النوم ᥫ᭡</h3></div>
+            </div>
+            <div class="card" onclick="showSection('general')" style="cursor: pointer;">
+                <div class="card-header" style="background:var(--color5)"><div class="dot"></div><div class="dot"></div></div>
+                <div class="card-body"><h3>التصنيف العام ⊹</h3></div>
+            </div>
+        </section>
+
+        <section id="morning" class="hidden">
+            <button class="back-btn" onclick="showSection('home')">⇒ عودة</button>
+            <div class="no-border-card">
+                <p>الحمدلله و الصلاة و السلام على رسول الله وعلى آله و صحبه و من ولاه</p>
+               <div class="bow-divider">𝜗ৎ</div> 
+            </div>
+
+<div class="card">
+                <div class="card-header"><div class="dot"></div><div class="dot"></div></div>
+                <div class="card-body">
+                    <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">اللَّهُ لا إِلهَ إِلّا هُوَ الحَيُّ القَيّومُ لا تَأخُذُهُ سِنَةٌ وَلا نَومٌ لَهُ ما فِي السَّماواتِ وَما فِي الأَرضِ مَن ذَا الَّذي يَشفَعُ عِندَهُ إِلّا بِإِذنِهِ يَعلَمُ ما بَينَ أَيديهِم وَما خَلفَهُم وَلا يُحيطونَ بِشَيءٍ مِن عِلمِهِ إِلّا بِما شاءَ وَسِعَ كُرسِيُّهُ السَّماواتِ وَالأَرضَ وَلا يَئودُهُ حِفظُهُما وَهُوَ العَلِيُّ العَظيمُ</p>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px;">
+                        <b></b> أن مَن قرأها عندَ النومِ لا يزالُ عليه من اللهِ حافظٌ ، ولا يقربُه شيطانٌ حتى يُصبِحَ<br>
+                        <small>المحدث : ابن باز | المصدر : مجموع فتاوى ابن باز | الصفحة أو الرقم : 454/3</small>
+                    </p>
+<div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_1">1</div>
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_1', 1)">✶</button>                    <button class="btn-reset" onclick="resetCounter('m_krsi', 1)">↺</button>
+                    <span class="more-details" onclick="openModal(`وكَّلَني رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم بحِفظِ زَكاةِ رَمَضانَ، فأتاني آتٍ فجَعَلَ يَحثو مِنَ الطَّعامِ، فأخَذتُه وقُلتُ: واللهِ لَأرفَعَنَّكَ إلى رَسولِ اللهِ صلَّى اللهُ عليه وسلَّم، قال: إنِّي مُحتاجٌ، وعليَّ عيالٌ، ولي حاجةٌ شَديدةٌ، قال: فخَلَّيتُ عنه، فأصبَحتُ، فقال النَّبيُّ صلَّى اللهُ عليه وسلَّم: يا أبا هُرَيرةَ، ما فعَلَ أسيرُكَ البارِحةَ؟ قال: قُلتُ: يا رَسولَ اللهِ، شَكا حاجةً شَديدةً وعيالًا، فرَحِمتُه فخَلَّيتُ سَبيلَه، قال: أما إنَّه قد كَذَبَكَ وسَيَعودُ، فعَرَفتُ أنَّه سَيَعودُ؛ لقَولِ رَسولِ اللهِ صلَّى اللهُ عليه وسلَّم: إنَّه سَيَعودُ، فرَصَدتُه فجاءَ يَحثو مِنَ الطَّعامِ، فأخَذتُه، فقُلتُ: لَأرفَعَنَّكَ إلى رَسولِ اللهِ صلَّى اللهُ عليه وسلَّم، قال: دَعني؛ فإنِّي مُحتاجٌ، وعليَّ عيالٌ، لا أعودُ، فرَحِمتُه فخَلَّيتُ سَبيلَه، فأصبَحتُ، فقال لي رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم: يا أبا هُرَيرةَ، ما فعَلَ أسيرُكَ؟ قُلتُ: يا رَسولَ اللهِ، شَكا حاجةً شَديدةً وعيالًا، فرَحِمتُه فخَلَّيتُ سَبيلَه، قال: أما إنَّه قد كَذَبَكَ وسَيَعودُ، فرَصَدتُه الثَّالِثةَ، فجاءَ يَحثو مِنَ الطَّعامِ، فأخَذتُه فقُلتُ: لَأرفَعَنَّكَ إلى رَسولِ اللهِ، وهذا آخِرُ ثَلاثِ مَرَّاتٍ أنَّكَ تَزعُمُ لا تَعودُ ثُمَّ تَعودُ، قال: دَعْني أُعَلِّمْكَ كَلِماتٍ يَنفَعُكَ اللهُ بها، قُلتُ: ما هو؟ قال: إذا أويتَ إلى فِراشِكَ فاقرَأْ آيةَ الكُرسيِّ: {اللهُ لا إلَهَ إلَّا هو الحَيُّ القَيُّومُ} [البقرة: 255] ، حتَّى تَختِمَ الآيةَ؛ فإنَّكَ لَن يَزالَ عليك مِنَ اللهِ حافِظٌ، ولا يَقرَبَنَّكَ شَيطانٌ حتَّى تُصبِحَ. فخَلَّيتُ سَبيلَه، فأصبَحتُ، فقال لي رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم: ما فعَلَ أسيرُكَ البارِحةَ؟ قُلتُ: يا رَسولَ اللهِ، زَعَمَ أنَّه يُعَلِّمُني كَلِماتٍ يَنفَعُني اللهُ بها، فخَلَّيتُ سَبيلَه، قال: ما هي؟ قُلتُ: قال لي: إذا أويتَ إلى فِراشِكَ فاقرَأْ آيةَ الكُرسيِّ مِن أوَّلِها حتَّى تَختِمَ الآيةَ: {اللهُ لَا إلَهَ إلَّا هو الحَيُّ القَيُّومُ} [البقرة: 255] ، وقال لي: لَن يَزالَ عليك مِنَ اللهِ حافِظٌ، ولا يَقرَبَكَ شيطانٌ حتَّى تُصبِحَ -وكانوا أحرَصَ شَيءٍ على الخَيرِ- فقال النَّبيُّ صلَّى اللهُ عليه وسلَّم: أما إنَّه قد صَدَقَكَ، وهو كَذوبٌ، تَعلَمُ مَن تُخاطِبُ مُنذُ ثَلاثِ لَيالٍ يا أبا هُرَيرةَ؟ قال: لا، قال: ذاكَ شَيطانٌ.
+الراوي : أبو هريرة | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 2311 | خلاصة حكم المحدث : [معلق]
+التخريج : أخرجه موصولاً النسائي في ((السنن الكبرى)) (10795)، وابن خزيمة (2424) باختلاف يسير، والبيهقي في ((شعب الإيمان)) (2170) مختصراً باختلاف يسير`)">تفاصيل أكثر</span>
+                </div>
+                </div>
+                
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="card-body">
+        <!-- مساحة كتابة نص الآية لاحقاً -->
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">
+           بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ 
+           <br>
+           قُلۡ هُوَ ٱللَّهُ أَحَدٌ ۝١ ٱللَّهُ ٱلصَّمَدُ ۝٢ لَمۡ يَلِدۡ وَلَمۡ يُولَدۡ ۝٣ وَلَمۡ يَكُن لَّهُۥ كُفُوًا أَحَدُۢ ۝٤
+           <br>
+           بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ 
+           <br>
+           قُلۡ أَعُوذُ بِرَبِّ ٱلۡفَلَقِ ۝١ مِن شَرِّ مَا خَلَقَ ۝٢ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝٣ وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِي ٱلۡعُقَدِ ۝٤ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ ۝٥
+           <br>
+           بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ 
+           <br>
+           قُلۡ أَعُوذُ بِرَبِّ ٱلنَّاسِ ۝١ مَلِكِ ٱلنَّاسِ ۝٢ إِلَٰهِ ٱلنَّاسِ ۝٣ مِن شَرِّ ٱلۡوَسۡوَاسِ ٱلۡخَنَّاسِ ۝٤ ٱلَّذِي يُوَسۡوِسُ فِي صُدُورِ ٱلنَّاسِ ۝٥ مِنَ ٱلۡجِنَّةِ وَٱلنَّاسِ ۝٦
+        </p>
+
+        <!-- جزئية الوصف (فارغة حالياً) -->
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px;">
+        عن عبد الله بن خبيب رضي الله عنه قال: قال رسول الله صلى الله عليه وسلم: قل، قلت يا رسول الله ما أقول؟ قال: قل هو الله أحد، والمعوذتين حين تمسي وحين تصبح ثلاث مرات تكفيك من كل شيء.
+       <br> 
+       <small>
+       المصدر : صحيح أبي داود |
+الصفحة أو الرقم: 5082 | 
+خلاصة حكم المحدث : حسن.
+</small>
+        </p>
+
+        <!-- العداد (يبدأ من 1 وينزل لـ 0) -->
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 20px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_2">3</div>
+        
+        <!-- أزرار التحكم -->
+        <button class="btn-count" onclick="countdown('m_2', 3)">✶</button>
+        <button class="btn-reset" onclick="resetCounter('m_2', 3)">↺</button>
+        
+        <span class="more-details" onclick="openModal(
+        `خرجنا في ليلةِ مَطَرٍ وظُلْمَةٍ شديدةٍ نطلبُ رسولَ اللهِ صلى الله عليه وسلم لِيُصليَ لنا ، فأدركناه ، فقال : أصليتم ؟ فلم أقلْ شيئًا ، فقال : قلْ . فلم أقلْ شيئًا ، ثم قال : قلْ. فلم أقلْ شيئًا ، ثم قال : قلْ : فقلتُ : يا رسولَ اللهِ، ما أقولُ ؟ قال : قل هو الله أحد والمُعَوِّذَتين حينَ تُمسي وحينَ تُصبحُ ثلاثَ مراتٍ تُكفيك مِن كلِّ شيءٍ.
+الراوي : عبدالله بن خبيب | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5082 | خلاصة حكم المحدث : حسن
+التخريج : أخرجه أبو داود (5082)، والترمذي (3575)، وابن أبي عاصم في ((الآحاد والمثاني)) (2572) واللفظ لهم، والنسائي (5428) بنحوه`)"
+>تفاصيل      
+        أكثر</span>
+        
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="card-body">
+        <!-- مساحة النص -->
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">
+أصبحنا وأصبح الملك لله والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، ربِّ أسألك خير ما في هذا اليوم وخير ما بعده وأعوذ بك من شر ما في هذا اليوم وشر ما بعده ربِّ أعوذ بك من الكسل وسوء الكبر، ربَّ أعوذ بك من عذابٍ في النار وعذاب في القبر        </p>
+
+        <!-- جزئية الوصف مع خاصية الترتيب التلقائي للأسطر -->
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px; white-space: pre-line;">  الراوي : عبدالله بن مسعود | المحدث : مسلم | المصدر : صحيح مسلم | الصفحة أو الرقم : 2723
+| التخريج : من أفراد مسلم على البخاري
+        </p>
+
+        <!-- العداد المحدث بـ ID جديد (m_2) والقيمة المطلوبة -->
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 20px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_0">1</div>
+        
+        <!-- الأزرار المحدثة لتعمل مع m_2 -->
+        <button class="btn-count" onclick="countdown('m_0', 1)">✶</button>
+        <button class="btn-reset" onclick="resetCounter('m_0', 1)">↺</button>
+
+        <!-- رابط التفاصيل -->
+        <span class="more-details" onclick="openModal(`كانَ رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم إذا أمسى قال: أمسَينا وأمسى المُلكُ للَّهِ، والحَمدُ للَّهِ، لا إلَهَ إلَّا اللهُ وحدَه لا شَريكَ له. قال الحَسَنُ: فحدَّثَني الزُّبَيدُ أنَّه حَفِظَ عن إبراهيمَ في هذا: له المُلكُ وله الحَمدُ، وهو على كُلِّ شَيءٍ قديرٌ، اللَّهمَّ أسألُكَ خَيرَ هذه اللَّيلةِ، وأعوذُ بكَ مِن شَرِّ هذه اللَّيلةِ وشَرِّ ما بَعدَها، اللَّهمَّ إنِّي أعوذُ بكَ مِنَ الكَسَلِ وسوءِ الكِبَرِ، اللَّهمَّ إنِّي أعوذُ بكَ مِن عَذابٍ في النَّارِ وعَذابٍ في القَبرِ.
+الراوي : عبدالله بن مسعود | المحدث : مسلم | المصدر : صحيح مسلم
+الصفحة أو الرقم: 2723 | خلاصة حكم المحدث : [صحيح]
+التخريج : من أفراد مسلم على البخاري`)"> تفاصيل أكثر </span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="card-body">
+        <!-- مساحة النص -->
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">
+اللَّهمَّ بِكَ أصبَحنا، وبِكَ أمسَينا، وبِكَ نَحيا وبِكَ نَموتُ وإليكَ النُّشورُ        </p>
+
+        <!-- جزئية الوصف -->
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px; white-space: pre-line;">الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5068 | خلاصة حكم المحدث : صحيح        </p>
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 20px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_4">1</div>
+        
+        <!-- الزر برمز النجمة فقط -->
+        <button class="btn-count" style="font-size: 1.5rem;" onclick="countdown('m_4', 1)">✶</button>
+        
+        <button class="btn-reset" onclick="resetCounter('m_4', 1)">↺</button>
+
+        <!-- رابط التفاصيل -->
+        <span class="more-details" onclick="openModal(`إذا أصبحَ أحدُكُم فليقُلْ : اللَّهمَّ بِكَ أصبَحنا، وبِكَ أمسَينا، وبِكَ نَحيا وبِكَ نَموتُ وإليكَ النُّشورُ، وإذا أمسى فليقُلْ: اللَّهمَّ بِكَ أمسَينا وبِكَ أصبَحنا وبِكَ نَحيا وبِكَ نموتُ ، وإليكَ المصيرُ
+خلاصة حكم المحدث : حسن صحيح
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : الكلم الطيب | الصفحة أو الرقم : 20
+| التخريج : أخرجه الترمذي (3391)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="card-body">
+        <!-- مساحة النص -->
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">ْ
+      أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ ، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ فَتْحَهُ وَنَصْرَهُ وَنُورَهُ وَبَرَكَتَهُ وَهِدَايَتَهُ ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهِ وَشَرِّ مَا بَعْدَهُ، ثُمَّ إِذَا أَمْسَى ، فَلْيَقُلْ مِثْلَ ذَلِكَ</p>
+
+        <!-- جزئية الوصف -->
+         <p style="font-size: 0.85rem; color: #aaa; margin-top: 15px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5; display: block;">الراوي : - | المحدث : ابن القيم | المصدر : زاد المعاد الصفحة أو الرقم : 2/340        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 20px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_5">1</div>
+        
+        <button class="btn-count" style="font-size: 1.5rem;" onclick="countdown('m_5', 1)">✶</button>
+        
+        <button class="btn-reset" onclick="resetCounter('m_5', 1)">↺</button>
+
+        <!-- رابط التفاصيل -->
+        <span class="more-details" onclick="openModal(`وَقَالَ : ( إِذَا أَصْبَحَ أَحَدُكُمْ، فَلْيَقُلْ : أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ ، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ فَتْحَهُ وَنَصْرَهُ وَنُورَهُ وَبَرَكَتَهُ وَهِدَايَتَهُ ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهِ وَشَرِّ مَا بَعْدَهُ، ثُمَّ إِذَا أَمْسَى ، فَلْيَقُلْ مِثْلَ ذَلِكَ ) حَدِيثٌ حَسَنٌ . [زاد المعاد، صفحة ٣٤٠]`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهُمَّ إِنِّي أَصْبَحْتُ أُشْهِدُكَ، وَأُشْهِدُ حَمَلَةَ عَرْشِكَ، وَمَلَائِكَتَكَ، وَجَمِيعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلَّا أَنْتَ وَحْدَكَ لَا شَرِيكَ لَكَ، وَأَنَّ مُحَمَّدًا عَبْدُكَ وَرَسُولُكَ</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b> من قال حين يصبحُ أو يمسي: اللهمَّ إني أصبحتُ أشهدُكَ وأشهدُ حملةَ عرشِكَ، وملائكتَكَ وجميعَ خلقِك بأنَّك أنت اللهُ لا إلهَ إلا أنتَ وحدك لا شريكَ لك، وأنَّ محمَّدًا عبدُك ورسولُك أعتقَ اللهُ ربُعَه من النَّارِ، ومن قالها مرَّتين أعتقَ اللهُ نصفَه من النَّارِ، ومن قالها ثلاثًا أعتقَ اللهُ ثلاثةَ أرباعِه من النَّارِ، فإن قالها أربعًا أعتقَه اللهُ من النَّارِ
+خلاصة حكم المحدث : إسناده حسن
+الراوي : أنس بن مالك | المحدث : ابن باز | المصدر : مجموع فتاوى ابن باز الصفحة أو الرقم : 26/29</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_6">4</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_6', 4)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_6', 4)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`عن أبن باز: الحديث حسن لا بأس به، ويستحب أن تقولها أربع مرات في الليل والنهار، فإذا مت من يومك كان هذا من أسباب عتقك من النار، وهكذا في الليلة، هذا من أسباب العتق من النار، وهكذا الأذكار الشرعية الواردة عن النبي ﷺ في أول النهار وفي آخره، يجتهد في الإتيان بها،`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">أصبحنا على فطرة الإسلام، وعلى كلمة الإخلاص، وعلى دين نبينا محمد ﷺ، وعلى ملّةِ أبينا إبراهيمَ حنيفًا مسلمًا وما كان من المشركين.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>الراوي : عبدالرحمن بن أبزى | المحدث : شعيب الأرناؤوط | المصدر : تخريج المسند لشعيب | الصفحة أو الرقم : 15367
+| التخريج : أخرجه النسائي في ((السنن الكبرى)) (9829)، وأحمد (15367) واللفظ له</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_8">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_8', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_8', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`كان رسولُ اللهِ صلَّى اللهُ عليه وسلَّمَ يُعلِّمُنا إذا أصبَحْنا: أصبَحْنا على فِطْرةِ الإسلامِ، وكَلمةِ الإخلاصِ، وسُنَّةِ نَبيِّنا محمَّدٍ صلَّى اللهُ عليه وسلَّمَ، ومِلَّةِ أَبينا إبراهيمَ حَنيفًا مُسلِمًا، وما كان منَ المُشرِكينَ، وإذا أمسَيْنا مثلَ ذلك.
+الراوي : أبي بن كعب | المحدث : شعيب الأرناؤوط | المصدر : تخريج المسند لشعيب
+الصفحة أو الرقم: 21144 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه عبدالله بن أحمد في ((زوائد المسند)) (21144) واللفظ له، والطبراني في ((الدعاء)) (293)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ ما أصبحَ بي من نِعمةٍ أو بأحدٍ من خلقِك فمنكَ وحدَك، لا شريكَ لَك، فلَك الحمدُ، ولَك الشُّكرُ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b> خلاصة حكم المحدث : إسناده ضعيف
+الراوي : عبدالله بن غنام البياضي | المحدث : الألباني | المصدر : الكلم الطيب الصفحة أو الرقم : 260px
+يجوز الأخذ به كذكر.</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_9">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_9', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_9', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قالَ حينَ يُصبِحُ: اللَّهمَّ ما أصبحَ بي من نِعمةٍ أو بأحدٍ من خلقِك فمنكَ وحدَك، لا شريكَ لَك، فلَك الحمدُ، ولَك الشُّكرُ، فقد أدَّى شُكرَ يومِه، ومن قالَ مثلَ ذلِك حينَ يُمسي، فقد أدَّى شُكرَ ليلتِه
+خلاصة حكم المحدث : إسناده ضعيف
+الراوي : عبدالله بن غنام البياضي | المحدث : الألباني | المصدر : الكلم الطيب الصفحة أو الرقم : 26
+التخريج : أخرجه أبو داود (5073)، والنسائي في ((السنن الكبرى)) (9835)، والبيهقي في ((شعب الإيمان)) (4368) باختلاف يسير`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ فاطِرَ السَّمَواتِ والأرضِ، عالِمَ الغَيبِ والشَّهادةِ، رَبَّ كُلِّ شَيءٍ ومَليكَه، أشهَدُ أنْ لا إلهَ إلَّا أنتَ، أعوذُ بِكَ مِن شَرِّ نَفْسي ومِن شَرِّ الشَّيطانِ وشِركِه.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>أن أبا بكرٍ الصديقَ رضي الله عنه قال يا رسولَ اللهِ مرني بكلماتٍ أقولُهُن إذا أصبحتُ وإذا أمسيتُ, قال قل: اللهم فاطرَ السمواتِ والأرضِ عالمَ الغيبِ والشهادةِ ربَّ كلِّ شيءٍ ومليكَه، أشهدُ أن لا إله إلا أنت، أعوذُ بك من شرِّ نفسي، وشرِّ الشيطانِ وشِرْكِه. قال: قلْها إذا أصبحتَ, وإذا أمسيتَ، وإذا أخذتَ مضجعَك.
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5067 | خلاصة حكم المحدث : صحيح</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_10">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_10', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_10', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`أنَّ أبا بَكرٍ الصِّدِّيقَ رَضيَ اللهُ عنهما قال: يا رَسولَ اللهِ، مُرْني بكَلِماتٍ أقولُهُنَّ إذا أصبَحتُ، وإذا أمسَيتُ. قال: قُلِ: اللَّهمَّ فاطِرَ السَّمَواتِ والأرضِ، عالِمَ الغَيبِ والشَّهادةِ، رَبَّ كُلِّ شَيءٍ ومَليكَه، أشهَدُ أنْ لا إلهَ إلَّا أنتَ، أعوذُ بِكَ مِن شَرِّ نَفْسي ومِن شَرِّ الشَّيطانِ وشِركِه. قال: قُلْها إذا أصبَحتَ وإذا أمسَيتَ وإذا أخَذتَ مَضجَعَكَ.
+خلاصة حكم المحدث : صحيح
+الراوي : أبو هريرة | المحدث : ابن دقيق العيد | المصدر : الاقتراح في بيان الاصطلاح | الصفحة أو الرقم : 128
+| التخريج : أخرجه أبو داود (5067)، والترمذي (3392)، وأحمد (51) باختلاف يسير`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ أنتَ ربِّي لا إلهَ إلَّا أنتَ خلَقْتَني وأنا أمتك أصبَحْتُ على عهدِكَ ووَعْدِكَ ما استطَعْتُ أعوذُ بكَ مِن شرِّ ما صنَعْتُ وأبوءُ لكَ بنعمتِكَ علَيَّ وأبوءُ لكَ بذُنوبي فاغفِرْ لي إنَّه لا يغفِرُ الذُّنوبَ إلَّا أنتَ
+</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>سيِّدُ الاستغفارِ أنْ يقولَ العبدُ : اللَّهمَّ أنتَ ربِّي وأنا عبدُكَ لا إلهَ إلَّا أنتَ خلَقْتَني وأنا عبدُكَ أصبَحْتُ على عهدِكَ ووَعْدِكَ ما استطَعْتُ أعوذُ بكَ مِن شرِّ ما صنَعْتُ وأبوءُ لكَ بنعمتِكَ علَيَّ وأبوءُ لكَ بذُنوبي فاغفِرْ لي إنَّه لا يغفِرُ الذُّنوبَ إلَّا أنتَ
+خلاصة حكم المحدث : أخرجه في صحيحه
+الراوي : شداد بن أوس | المحدث : ابن حبان | المصدر : صحيح ابن حبان | الصفحة أو الرقم : 932</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_11">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_11', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_11', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`سَيِّدُ الاستِغفارِ أن تَقولَ: اللهُمَّ أنتَ رَبِّي لا إلَهَ إلَّا أنتَ، خَلَقتَني وأنا عَبدُك، وأنا على عَهدِك ووَعدِك ما استَطَعتُ، أعوذُ بك مِن شَرِّ ما صَنَعتُ، أبوءُ لك بنِعمَتِك عَلَيَّ، وأبوءُ لك بذَنبي، فاغفِرْ لي؛ فإنَّه لا يَغفِرُ الذُّنوبَ إلَّا أنتَ. قال: ومَن قالها مِنَ النَّهارِ موقِنًا بها، فماتَ مِن يَومِه قَبلَ أن يُمسيَ، فهو مِن أهلِ الجَنَّةِ، ومَن قالها مِنَ اللَّيلِ وهو موقِنٌ بها، فماتَ قَبلَ أن يُصبِحَ، فهو مِن أهلِ الجَنَّةِ.
+الراوي : شداد بن أوس | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 6306 | خلاصة حكم المحدث : [صحيح]
+التخريج : من أفراد البخاري على مسلم
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ عافِني في بَدَني، اللَّهمَّ عافِني في سَمْعي، اللَّهمَّ عافِني في بَصَري، لا إلهَ إلَّا أنتَ،اللَّهمَّ إنِّي أَعوذُ بكَ منَ الكُفرِ والفَقرِ، اللَّهمَّ إنِّي أَعوذُ بِكَ مِن عَذابِ القَبرِ، لا إلهَ إلَّا أنتَ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>قال عبدالرحمن بن أبي بكرة يا أَبتِ، إنِّي أَسمَعُك تَدْعو كلَّ غَداةٍ: اللَّهمَّ عافِني في بَدَني، اللَّهمَّ عافِني في سَمْعي، اللَّهمَّ عافِني في بَصَري، لا إلهَ إلَّا أنتَ؛ تُعيدُها ثلاثًا حينَ تُصبِحُ، وثَلاثًا حينَ تُمسي؟ فَقال: إنِّي سَمِعتُ رَسولَ اللهِ صلَّى اللهُ عليهِ وسلَّم يَدْعو بِهنَّ، فأَنا أُحِبُّ أن أَستَنَّ بِسُنَّتِه. قال عبَّاسٌ فيهِ: وتَقولُ: اللَّهمَّ إنِّي أَعوذُ بكَ منَ الكُفرِ والفَقرِ، اللَّهمَّ إنِّي أَعوذُ بِكَ مِن عَذابِ القَبرِ، لا إلهَ إلَّا أنتَ، تُعيدُها ثَلاثًا حينَ تُصبِح، وثَلاثًا حينَ تُمسي، فتَدْعو بهِنَّ، فأُحِبُّ أن أَستَنَّ بِسُنَّتِه.
+خلاصة حكم المحدث : إسناده حسن
+الراوي : أبو بكرة نفيع بن الحارث | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 5090</p>
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_12">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_12', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_12', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`
+مسند أحمد (34/ 74 ط الرسالة)
+: 20430 - حدثنا أبو عامر، حدثنا عبد الجليل، حدثني جعفر بن ميمون، حدثني عبد الرحمن بن أبي بكرة أنه قال لأبيه: يا أبه ، إني أسمعك تدعو كل غداة: " اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت " تعيدها ثلاثا حين تصبح، وثلاثا حين تمسي. وتقول: " اللهم إني أعوذ بك من الكفر والفقر، اللهم إني أعوذ بك من عذاب القبر، لا إله إلا أنت " تعيدها حين تصبح ثلاثا، وثلاثا حين تمسي. قال: نعم يا بني، إني سمعت النبي صلى الله عليه وسلم يدعو بهن، فأحب أن أستن بسنته. قال: وقال النبي صلى الله عليه وسلم: " دعوات المكروب: اللهم رحمتك أرجو، فلا تكلني إلى نفسي طرفة عين، أصلح لي شأني كله، لا إله إلا أنت "
+`)"
+
+>تفاصيل أكثر</span
+
+</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ إنِّي أسألُك العافيةَ في الدُّنيا والآخرةِ اللَّهمَّ أسألُك العفوَ والعافيةَ في ديني ودنيايَ وأَهلي ومالي اللَّهمَّ استر عوراتي وآمِن رَوعاتي اللَّهمَّ احفظني من بينِ يدىَّ ومن خَلفي وعن يَميني وعَن شِمالي ومن فَوقي وأعوذُ بعظَمتِك أن اغتالَ من تحتي</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>الراوي : عبدالله بن عمر | المحدث : الألباني | المصدر : الكلم الطيب | الصفحة أو الرقم : 27</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_13">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_13', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_13', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`لم يكنْ رسولُ اللهِ صلى الله عليه وسلم يَدَعُ هؤلاء الدعواتِ حينَ يُمسي، وحينَ يُصبِحُ :اللهم إني أسألُك العافيةَ في الدنيا والآخرةِ ، اللهم إني أسألُك العفوَ والعافيةَ في ديني ودنياي وأهلي ومالي ، اللهم استرْ عورتي وآمنْ روعاتي ، اللهم احفظْني مِن بين يديَّ ومن خلفي وعن يميني وعن شمالي ومن فوقي ، وأعوذُ بعظمتِك أن أُغتالَ مِن تحتي.
+الراوي : عبدالله بن عمر | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5074 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه أبو داود (5074) واللفظ له، وابن ماجه (3871)، وأحمد (4785)
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">بسمِ اللَّهِ الَّذي لا يضرُّ معَ اسمِهِ شيءٌ في الأرضِ ولا في السَّماءِ وَهوَ السَّميعُ العليمُ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>ما من عبدٍ يقولُ في صباحِ كلِّ يومٍ ومساءِ كلِّ ليلةٍ بسمِ اللَّهِ الَّذي لا يضرُّ معَ اسمِهِ شيءٌ في الأرضِ ولا في السَّماءِ وَهوَ السَّميعُ العليمُ ثلاثَ مرَّاتٍ إلا لم يضرَّهُ شيءٌ
+خلاصة حكم المحدث : صحيح
+الراوي : - | المحدث : ابن القيم | المصدر : زاد المعاد | الصفحة أو الرقم : 2/338</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_14">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_14', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_14', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قال: بسمِ اللهِ الذي لا يَضرُ مع اسمِه شيءٌ في الأرضِ ولا في السماءِ وهو السميعُ العليمِ . ثلاثُ مراتٍ ، لم تصبْه فجأةُ بلاءٍ حتى يُصبحَ ، ومَن قالها حينَ يُصبحُ ثلاثَ مراتٍ لم تُصبْه فجأةُ بلاءٍ حتى يُمسي.
+الراوي : عثمان بن عفان | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5088 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه أبو داود (5088) واللفظ له، والترمذي (3388)، والنسائي في ((السنن الكبرى)) (9843)، وابن ماجه (3869)، وأحمد (446)
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">رَضيتُ باللَّهِ ربًّا، وبالإسلامِ دينًا، وبِمُحمَّدٍ رسولًا</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>عن أبي سَلَّامٍ قال: كُنَّا قُعودًا في مَسجِدِ حِمصَ، إذ مَرَّ رَجُلٌ فقالوا: هذا خَدَمَ رسولَ اللهِ صلَّى اللهُ عليه وسلَّمَ، قال: فنَهَضتُ فسَأَلتُه فقُلتُ: حَدِّثْنا بما سَمِعتَ من رسولِ اللهِ صلَّى اللهُ عليه وسلَّمَ لم يَتَداوَلْه الرِّجالُ فيما بيْنَكما، قال: سَمِعتُ رسولَ اللهِ صلَّى اللهُ عليه وسلَّمَ يقولُ: ما مِن عبدٍ مُسلِمٍ يقولُ ثلاثَ مرَّاتٍ حين يُمْسي أو يُصبِحُ: رَضيتُ باللهِ رَبًّا، وبالإسلامِ دِينًا، وبمُحمَّدٍ نبيًّا؛ إلَّا كان حقًّا على اللهِ أنْ يُرضِيَه يَومَ القيامةِ.
+خلاصة حكم المحدث : صحيح لغيره
+الراوي : رجال من الصحابة | المحدث : شعيب الأرناؤوط | المصدر : تخريج المسند لشعيب | الصفحة أو الرقم : 23111
+ </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_15">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_15', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_15', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`من قالَ: رَضيتُ باللَّهِ ربًّا، وبالإسلامِ دينًا، وبِمُحمَّدٍ رسولًا، وجَبت لَهُ الجنَّةُ
+خلاصة حكم المحدث : صحيح
+الراوي : أبو سعيد الخدري | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 1529
+| التخريج : أخرجه أبو داود (1529)، ومسلم (1884)، والنسائي في ((السنن الكبرى)) (9748) بلفظه.`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">حسبيَ اللهُ، لا إلهَ إلَّا هوَ ، عليهِ توكَّلْتُ وهوَ ربُّ العرشِ العَظيمِ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>عن أبي الدرداءِ قال : ] من قال إذا أصبح وإذا أمسَى : حسبِيَ اللهُ لا إلهَ إلا هو عليه توكلتُ وهو ربُّ العرشِ العظيمِ سبعَ مراتٍ كفاه اللهُ ما أهمَّه
+خلاصة حكم المحدث : موقوف إسناده جيد
+الراوي : - | المحدث : ابن باز | المصدر : مجموع فتاوى ابن باز الصفحة أو الرقم : 294/9</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_16">7</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_16', 7)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_16', 7)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`سمِعتُ أبا الدَّرداءِ يقولُ : ما من عَبدٍ يقولُ : حسبيَ اللهُ، لا إلهَ إلَّا هوَ ، عليهِ توكَّلْتُ وهوَ ربُّ العرشِ العَظيمِ ، سَبعَ مرَّاتٍ، صادِقًا كان بها أو كاذبًا، إلَّا كفاه اللهُ ما همَّهُ
+خلاصة حكم المحدث : هذه زيادة غريبة ، ثم رواه في ترجمة عبد الرزاق أبي محمد ، عن أحمد بن عبد الله بن عبد الرزاق ، عن جده عبد الرزاق بن عمر ، يسنده فرفعه ، فذكر مثله بالزيادة ، وهذا منكر
+الراوي : هجيمة بنت حيي أم الدرداء الصغرى | المحدث : ابن كثير | المصدر : تفسير القرآن العظيم الصفحة أو الرقم : 4/181
+التخريج : أخرجه أبو داود (5081)، وابن السني في ((عمل اليوم والليلة)) (71)، وابن عساكر في ((تاريخ دمشق)) (36/ 149) باختلاف يسير.`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">سُبحانَ اللهِ وبحَمْدِه عَدَدَ خَلْقِه، ورِضا نَفْسِه، وزِنةَ عَرْشِه، ومِدادَ كَلِماتِه</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>خرج رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم من عند جُويريةَ -وكان اسمُها بَرَّةَ، فحَوَّلَ اسمَها- فخرج وهي في مُصَلَّاها، ورجع وهي في مصَلَّاها، فقال: لم تزالي في مُصَلَّاكِ هذا؟! قالت: نَعَمْ. قال: قد قُلتُ بَعْدَكِ أربَعَ كَلِماتٍ ثلاثَ مرَّاتٍ لو وُزِنَت بما قُلْتِ لوزنَتْهنَّ: سُبحانَ اللهِ وبحَمْدِه عَدَدَ خَلْقِه، ورِضا نَفْسِه، وزِنةَ عَرْشِه، ومِدادَ كَلِماتِه
+خلاصة حكم المحدث : سكت عنه [وقد قال في رسالته لأهل مكة كل ما سكت عنه فهو صالح]
+الراوي : عبدالله بن عباس | المحدث : أبو داود | المصدر : سنن أبي داود | الصفحة أو الرقم : 1503</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_17">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_17', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_17', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`سنن أبي داود (2/ 81)
+1503 - حدثنا داود بن أمية، حدثنا سفيان بن عيينة، عن محمد بن عبد الرحمن، مولى آل طلحة، عن كريب، عن ابن عباس، قال: خرج رسول الله صلى الله عليه وسلم من عند جويرية، وكان اسمها برة، فحول اسمها، فخرج وهي في مصلاها ورجع وهي في مصلاها، فقال: لم تزالي في مصلاك هذا؟، قالت: نعم، قال: قد قلت بعدك أربع كلمات، ثلاث مرات، لو وزنت بما قلت لوزنتهن، سبحان الله وبحمده عدد خلقه، ورضا نفسه، وزنة عرشه، ومداد كلماته`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ إنِّي أسأَلُكَ عِلمًا نافعًا، ورِزْقًا طيِّبًا، وعمَلًا مُتقَبَّلًا.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b> أنَّ النَّبيَّ صلَّى اللهُ عليه وسلَّم كان إذا أصبَح قال: اللَّهمَّ إنِّي أسأَلُكَ عِلمًا نافعًا، ورِزْقًا طيِّبًا، وعمَلًا مُتقَبَّلًا.
+خلاصة حكم المحدث : حسن
+الراوي : أم سلمة أم المؤمنين | المحدث : ابن حجر العسقلاني | المصدر : نتائج الأفكار | الصفحة أو الرقم : 2/411</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_18">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_18', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_18', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`كانَ يقولُ إذا صلَّى الصُّبحَ حينَ يسلِّمُ اللَّهمَّ إنِّي أسألُكَ عِلمًا نافعًا ورزقًا طيِّبًا وعملًا متقبَّلًا
+الراوي : أم سلمة أم المؤمنين | المحدث : الألباني | المصدر : صحيح ابن ماجه
+الصفحة أو الرقم: 762 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه ابن ماجه (925)، وأحمد (26602)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">يا حيُّ يا قيُّومُ برحمتِك أستغيثُ، أَصلِحْ لي شأني كلَّه، و لا تَكِلْني إلى نفسي طرفةَ عَيْنٍ</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>ما يمنعُكِ أن تسمَعي ما أُوصيكِ به ؟ أن تقولي إذا أصبحْتِ و إذا أمسَيتِ : يا حيُّ يا قيُّومُ برحمتِك أستغيثُ، أَصلِحْ لي شأني كلَّه، و لا تَكِلْني إلى نفسي طرفةَ عَيْنٍ
+خلاصة حكم المحدث : حسن
+الراوي : أنس بن مالك | المحدث : الألباني | المصدر : صحيح الترغيب الصفحة أو الرقم : 661</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_19">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_19', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_19', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`كانَ النَّبيُّ صلَّى اللَّهُ علَيهِ وسلَّمَ إذا كربَهُ أمرٌ قالَ: يا حيُّ يا قيُّومُ برَحمتِكَ أستغيثُ
+الراوي : أنس بن مالك | المحدث : الألباني | المصدر : صحيح الترمذي
+الصفحة أو الرقم: 3524 | خلاصة حكم المحدث : حسن
+التخريج : أخرجه الترمذي (3524) واللفظ له، وابن السني في ((عمل اليوم والليلة)) (337)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">سبحانَ اللَّهِ وبحمدِهِ</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>مَن قالَ حينَ يصبحُ وحينَ يُمسي : سبحانَ اللَّهِ وبحمدِهِ مائةَ مرَّةٍ : لم يأتِ أحدٌ يومَ القيامةِ بأفضلَ ممَّا جاءَ بِهِ ، إلَّا أحدٌ قالَ مثلَ ما قالَ ، أو زادَ علَيهِ
+خلاصة حكم المحدث : صحيح
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح الترمذي | الصفحة أو الرقم : 3469</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_20">100</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_20', 100)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_20', 100)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قال: سُبحانَ اللهِ وبحَمدِه، في يَومٍ مِائةَ مَرَّةٍ، حُطَّت خَطاياه وإن كانَت مِثلَ زَبَدِ البَحرِ.
+الراوي : أبو هريرة | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 6405 | خلاصة حكم المحدث : [صحيح]
+التخريج : أخرجه البخاري (6405) واللفظ له، ومسلم (2691) مطولاً
+
+مَن قالَ : سُبحانَ اللَّهِ العظيمِ وبحمدِهِ ، غُرِسَت لَهُ نَخلةٌ في الجنَّةِ
+خلاصة حكم المحدث : صحيح
+الراوي : جابر بن عبدالله | المحدث : الألباني | المصدر : صحيح الترمذي | الصفحة أو الرقم : 3465
+| التخريج : أخرجه الترمذي (3464) واللفظ له، والنسائي في ((السنن الكبرى)) (10663) باختلاف يسير
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ وَأَتُوبُ إِلَيْهِ</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>عن سعيد بن أبي بردة، عن أبيه، عن جدّه قال: جاء رسول الله صلى الله عليه وسلم ونحن جلوس، فقال: ما أصبحتُ غداة قط إلا استغفرتُ الله فيها مائة مرة. رواه النسائي في السنن الكبرى، وابن أبي شيبة في المصنف، وصححه الشيخ الألباني.</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_21">100</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_21', 100)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_21', 100)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قال : ( أسْتغفِرُ اللهَ الذي لا إلَه إلا هو الحَيُّ القَيُّومُ وأتُوبُ إِليْهِ ) يَقولُها ثلاثًا؛ غُفِرَ لهُ وإنْ كان فَرَّ من الزَّحْفِ.
+خلاصة حكم المحدث : صحيح
+الراوي : عبدالله بن مسعود | المحدث : الألباني | المصدر : صحيح الترغيب الصفحة أو الرقم : 1623
+التخريج : أخرجه الطبراني في ((المعجم الكبير)) (9/ 103) (8541)، واللفظ له، والحاكم في ((المستدرك على الصحيحين)) (1901)، باختلاف يسير.
+
+
+إنَّه لَيُغانُ على قَلبي، وإنِّي لَأستَغفِرُ اللَّهَ في اليَومِ مِائةَ مَرَّةٍ.
+الراوي : الأغر المزني أبو مالك | المحدث : مسلم | المصدر : صحيح مسلم
+الصفحة أو الرقم: 2702 | خلاصة حكم المحدث : [صحيح]
+التخريج : أخرجه أبو داود (1515)، وأحمد (17848)، وابن حبان (931) جميعهم بلفظه.`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">لا إلهَ إلا اللهُ وحدَه ، لا شريكَ له ، له الملكُ ، وله الحمدُ ، وهو على كلِّ شيءٍ قديرٍ .</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>من قال إذا أصبح : لا إله إلا اللهُ وحده لا شريك له ، له الملكُ وله الحمدُ ، وهو على كلِّ شيءٍ قديرٌ ، كان له عِدلُ رقبةٍ ، من ولد إسماعيلَ ، وكُتِبَتْ له بها عشرُ حسناتٍ ، وحَطَّ عنه بها عشرَ سيِّئاتٍ ، ورَفع له بها عشرَ درجاتٍ ، وكان في حِرْزٍ من الشيطانِ حتى يُمسيَ ، وإذا قالها إذا أمسى كان له مثلُ ذلك حتى يُصبِحَ
+خلاصة حكم المحدث : صحيح
+الراوي : أبو عياش الزرقي | المحدث : الألباني | المصدر : صحيح الجامع | الصفحة أو الرقم : 6418</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_22">10</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_22', 10)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_22', 10)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قال إذا أصبحَ : لا إلهَ إلا اللهُ وحدَه ، لا شريكَ له ، له الملكُ ، وله الحمدُ ، وهو على كلِّ شيءٍ قديرٍ ؛ كان له عدلُ رقبةٍ مِن ولدِ إسماعيلَ ، وكتب له عشرَ حسناتٍ ، وحطَّ عنه عشرَ سيئاتٍ ، ورفع له عشرَ درجاتٍ ، وكان في حِرْزٍ مِن الشيطانِ حتى يُمسي . وإن قالها إذا أمسى كان له مثلُ ذلك حينَ يُصبحُ .
+الراوي : أبو عياش الزرقي | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5077 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه أبو داود (5077) واللفظ له، والنسائي في ((السنن الكبرى)) (9855)، وابن ماجه (3867)، وأحمد (16583)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللهم صلِ و سلم و بارك على نبينا محمد</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>روى الطبراني عن أبي الدرداء رضي الله عنه، قال: قال رسول الله - صلى الله عليه وسلم -: "من صلى علي حين يصبح عشرًا، وحين يمسي عشرًا أدركته شفاعتي يوم القيامة".</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_23">10</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_23', 10)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_23', 10)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`روى الترمذي عَنْ أَبِي هُرَيْرَةَ، عَنِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: مَا جَلَسَ قَوْمٌ مَجْلِسًا لَمْ يَذْكُرُوا اللَّهَ فِيهِ، وَلَمْ يُصَلُّوا عَلَى نَبِيِّهِمْ، إِلَّا كَانَ عَلَيْهِمْ تِرَةً، فَإِنْ شَاءَ عَذَّبَهُمْ وَإِنْ شَاءَ غَفَرَ لَهُمْ. وقوله (ترة) أي حسرة وندامة.
+        
+         ما مِن أحدٍ يسلِّمُ عليَّ إلَّا ردَّ اللَّهُ عليَّ روحي حتَّى أردَّ علَيهِ السَّلامَ
+خلاصة حكم المحدث : حسن
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 2041
+| التخريج : أخرجه أبو داود (2041) واللفظ له، وأحمد (10815)
+
+لا تجعلوا بيوتَكُم قبورًا، ولا تجعلوا قَبري عيدًا، وصلُّوا عليَّ فإنَّ صلاتَكُم تبلغُني حَيثُ كنتُمْ
+خلاصة حكم المحدث : صحيح
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 2042
+| التخريج : أخرجه أبو داود (2042) واللفظ له، وأحمد (8790)
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <section id="evening" class="hidden"><button class="back-btn" onclick="showSection('home')">⇒ عودة</button><p style="text-align:center;"> 
+        
+        
+<div class="card">
+                <div class="card-header"><div class="dot"></div><div class="dot"></div></div>
+                <div class="card-body">
+                    <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">اللَّهُ لا إِلهَ إِلّا هُوَ الحَيُّ القَيّومُ لا تَأخُذُهُ سِنَةٌ وَلا نَومٌ لَهُ ما فِي السَّماواتِ وَما فِي الأَرضِ مَن ذَا الَّذي يَشفَعُ عِندَهُ إِلّا بِإِذنِهِ يَعلَمُ ما بَينَ أَيديهِم وَما خَلفَهُم وَلا يُحيطونَ بِشَيءٍ مِن عِلمِهِ إِلّا بِما شاءَ وَسِعَ كُرسِيُّهُ السَّماواتِ وَالأَرضَ وَلا يَئودُهُ حِفظُهُما وَهُوَ العَلِيُّ العَظيمُ</p>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px;">
+                        <b></b> أن مَن قرأها عندَ النومِ لا يزالُ عليه من اللهِ حافظٌ ، ولا يقربُه شيطانٌ حتى يُصبِحَ<br>
+                        <small>المحدث : ابن باز | المصدر : مجموع فتاوى ابن باز | الصفحة أو الرقم : 454/3</small>
+                    </p>
+<div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_44">1</div>
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_44', 1)">✶</button>                    <button class="btn-reset" onclick="resetCounter('m_44', 1)">↺</button>
+                    <span class="more-details" onclick="openModal(`وكَّلَني رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم بحِفظِ زَكاةِ رَمَضانَ، فأتاني آتٍ فجَعَلَ يَحثو مِنَ الطَّعامِ، فأخَذتُه وقُلتُ: واللهِ لَأرفَعَنَّكَ إلى رَسولِ اللهِ صلَّى اللهُ عليه وسلَّم، قال: إنِّي مُحتاجٌ، وعليَّ عيالٌ، ولي حاجةٌ شَديدةٌ، قال: فخَلَّيتُ عنه، فأصبَحتُ، فقال النَّبيُّ صلَّى اللهُ عليه وسلَّم: يا أبا هُرَيرةَ، ما فعَلَ أسيرُكَ البارِحةَ؟ قال: قُلتُ: يا رَسولَ اللهِ، شَكا حاجةً شَديدةً وعيالًا، فرَحِمتُه فخَلَّيتُ سَبيلَه، قال: أما إنَّه قد كَذَبَكَ وسَيَعودُ، فعَرَفتُ أنَّه سَيَعودُ؛ لقَولِ رَسولِ اللهِ صلَّى اللهُ عليه وسلَّم: إنَّه سَيَعودُ، فرَصَدتُه فجاءَ يَحثو مِنَ الطَّعامِ، فأخَذتُه، فقُلتُ: لَأرفَعَنَّكَ إلى رَسولِ اللهِ صلَّى اللهُ عليه وسلَّم، قال: دَعني؛ فإنِّي مُحتاجٌ، وعليَّ عيالٌ، لا أعودُ، فرَحِمتُه فخَلَّيتُ سَبيلَه، فأصبَحتُ، فقال لي رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم: يا أبا هُرَيرةَ، ما فعَلَ أسيرُكَ؟ قُلتُ: يا رَسولَ اللهِ، شَكا حاجةً شَديدةً وعيالًا، فرَحِمتُه فخَلَّيتُ سَبيلَه، قال: أما إنَّه قد كَذَبَكَ وسَيَعودُ، فرَصَدتُه الثَّالِثةَ، فجاءَ يَحثو مِنَ الطَّعامِ، فأخَذتُه فقُلتُ: لَأرفَعَنَّكَ إلى رَسولِ اللهِ، وهذا آخِرُ ثَلاثِ مَرَّاتٍ أنَّكَ تَزعُمُ لا تَعودُ ثُمَّ تَعودُ، قال: دَعْني أُعَلِّمْكَ كَلِماتٍ يَنفَعُكَ اللهُ بها، قُلتُ: ما هو؟ قال: إذا أويتَ إلى فِراشِكَ فاقرَأْ آيةَ الكُرسيِّ: {اللهُ لا إلَهَ إلَّا هو الحَيُّ القَيُّومُ} [البقرة: 255] ، حتَّى تَختِمَ الآيةَ؛ فإنَّكَ لَن يَزالَ عليك مِنَ اللهِ حافِظٌ، ولا يَقرَبَنَّكَ شَيطانٌ حتَّى تُصبِحَ. فخَلَّيتُ سَبيلَه، فأصبَحتُ، فقال لي رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم: ما فعَلَ أسيرُكَ البارِحةَ؟ قُلتُ: يا رَسولَ اللهِ، زَعَمَ أنَّه يُعَلِّمُني كَلِماتٍ يَنفَعُني اللهُ بها، فخَلَّيتُ سَبيلَه، قال: ما هي؟ قُلتُ: قال لي: إذا أويتَ إلى فِراشِكَ فاقرَأْ آيةَ الكُرسيِّ مِن أوَّلِها حتَّى تَختِمَ الآيةَ: {اللهُ لَا إلَهَ إلَّا هو الحَيُّ القَيُّومُ} [البقرة: 255] ، وقال لي: لَن يَزالَ عليك مِنَ اللهِ حافِظٌ، ولا يَقرَبَكَ شيطانٌ حتَّى تُصبِحَ -وكانوا أحرَصَ شَيءٍ على الخَيرِ- فقال النَّبيُّ صلَّى اللهُ عليه وسلَّم: أما إنَّه قد صَدَقَكَ، وهو كَذوبٌ، تَعلَمُ مَن تُخاطِبُ مُنذُ ثَلاثِ لَيالٍ يا أبا هُرَيرةَ؟ قال: لا، قال: ذاكَ شَيطانٌ.
+الراوي : أبو هريرة | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 2311 | خلاصة حكم المحدث : [معلق]
+التخريج : أخرجه موصولاً النسائي في ((السنن الكبرى)) (10795)، وابن خزيمة (2424) باختلاف يسير، والبيهقي في ((شعب الإيمان)) (2170) مختصراً باختلاف يسير`)">تفاصيل أكثر</span>
+                </div>
+                </div>
+                
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="card-body">
+        <!-- مساحة كتابة نص الآية لاحقاً -->
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">
+           بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ 
+           <br>
+           قُلۡ هُوَ ٱللَّهُ أَحَدٌ ۝١ ٱللَّهُ ٱلصَّمَدُ ۝٢ لَمۡ يَلِدۡ وَلَمۡ يُولَدۡ ۝٣ وَلَمۡ يَكُن لَّهُۥ كُفُوًا أَحَدُۢ ۝٤
+           <br>
+           بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ 
+           <br>
+           قُلۡ أَعُوذُ بِرَبِّ ٱلۡفَلَقِ ۝١ مِن شَرِّ مَا خَلَقَ ۝٢ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝٣ وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِي ٱلۡعُقَدِ ۝٤ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ ۝٥
+           <br>
+           بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ 
+           <br>
+           قُلۡ أَعُوذُ بِرَبِّ ٱلنَّاسِ ۝١ مَلِكِ ٱلنَّاسِ ۝٢ إِلَٰهِ ٱلنَّاسِ ۝٣ مِن شَرِّ ٱلۡوَسۡوَاسِ ٱلۡخَنَّاسِ ۝٤ ٱلَّذِي يُوَسۡوِسُ فِي صُدُورِ ٱلنَّاسِ ۝٥ مِنَ ٱلۡجِنَّةِ وَٱلنَّاسِ ۝٦
+        </p>
+
+        <!-- جزئية الوصف (فارغة حالياً) -->
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px;">
+        عن عبد الله بن خبيب رضي الله عنه قال: قال رسول الله صلى الله عليه وسلم: قل، قلت يا رسول الله ما أقول؟ قال: قل هو الله أحد، والمعوذتين حين تمسي وحين تصبح ثلاث مرات تكفيك من كل شيء.
+       <br> 
+       <small>
+       المصدر : صحيح أبي داود |
+الصفحة أو الرقم: 5082 | 
+خلاصة حكم المحدث : حسن.
+</small>
+        </p>
+
+        <!-- العداد (يبدأ من 1 وينزل لـ 0) -->
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 20px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_42">3</div>
+        
+        <!-- أزرار التحكم -->
+        <button class="btn-count" onclick="countdown('m_42', 3)">✶</button>
+        <button class="btn-reset" onclick="resetCounter('m_42', 3)">↺</button>
+        
+        <span class="more-details" onclick="openModal(
+        `خرجنا في ليلةِ مَطَرٍ وظُلْمَةٍ شديدةٍ نطلبُ رسولَ اللهِ صلى الله عليه وسلم لِيُصليَ لنا ، فأدركناه ، فقال : أصليتم ؟ فلم أقلْ شيئًا ، فقال : قلْ . فلم أقلْ شيئًا ، ثم قال : قلْ. فلم أقلْ شيئًا ، ثم قال : قلْ : فقلتُ : يا رسولَ اللهِ، ما أقولُ ؟ قال : قل هو الله أحد والمُعَوِّذَتين حينَ تُمسي وحينَ تُصبحُ ثلاثَ مراتٍ تُكفيك مِن كلِّ شيءٍ.
+الراوي : عبدالله بن خبيب | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5082 | خلاصة حكم المحدث : حسن
+التخريج : أخرجه أبو داود (5082)، والترمذي (3575)، وابن أبي عاصم في ((الآحاد والمثاني)) (2572) واللفظ لهم، والنسائي (5428) بنحوه`)"
+>تفاصيل      
+        أكثر</span>
+        
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="card-body">
+        <!-- مساحة النص -->
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">
+أمسينا وأمسى الملك لله والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، ربِّ أسألك خير ما في هذه الليلة وخير ما بعدها وأعوذ بك من شر ما في هذه الليلة وشر ما بعدها ربِّ أعوذ بك من الكسل وسوء الكبر، ربَّ أعوذ بك من عذابٍ في النار وعذاب في القبر        </p>
+
+        <!-- جزئية الوصف مع خاصية الترتيب التلقائي للأسطر -->
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px; white-space: pre-line;">  الراوي : عبدالله بن مسعود | المحدث : مسلم | المصدر : صحيح مسلم | الصفحة أو الرقم : 2723
+| التخريج : من أفراد مسلم على البخاري
+        </p>
+
+        <!-- العداد المحدث بـ ID جديد (m_2) والقيمة المطلوبة -->
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 20px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_41">1</div>
+        
+        <!-- الأزرار المحدثة لتعمل مع m_2 -->
+        <button class="btn-count" onclick="countdown('m_41', 1)">✶</button>
+        <button class="btn-reset" onclick="resetCounter('m_43', 1)">↺</button>
+
+        <!-- رابط التفاصيل -->
+        <span class="more-details" onclick="openModal(`كانَ رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم إذا أمسى قال: أمسَينا وأمسى المُلكُ للَّهِ، والحَمدُ للَّهِ، لا إلَهَ إلَّا اللهُ وحدَه لا شَريكَ له. قال الحَسَنُ: فحدَّثَني الزُّبَيدُ أنَّه حَفِظَ عن إبراهيمَ في هذا: له المُلكُ وله الحَمدُ، وهو على كُلِّ شَيءٍ قديرٌ، اللَّهمَّ أسألُكَ خَيرَ هذه اللَّيلةِ، وأعوذُ بكَ مِن شَرِّ هذه اللَّيلةِ وشَرِّ ما بَعدَها، اللَّهمَّ إنِّي أعوذُ بكَ مِنَ الكَسَلِ وسوءِ الكِبَرِ، اللَّهمَّ إنِّي أعوذُ بكَ مِن عَذابٍ في النَّارِ وعَذابٍ في القَبرِ.
+الراوي : عبدالله بن مسعود | المحدث : مسلم | المصدر : صحيح مسلم
+الصفحة أو الرقم: 2723 | خلاصة حكم المحدث : [صحيح]
+التخريج : من أفراد مسلم على البخاري`)"> تفاصيل أكثر </span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="card-body">
+        <!-- مساحة النص -->
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">
+اللَّهمَّ بِكَ أمسينا، وبِكَ أصبحنا، وبِكَ نَحيا وبِكَ نَموتُ وإليكَ المصير        </p>
+
+        <!-- جزئية الوصف -->
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px; white-space: pre-line;">الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5068 | خلاصة حكم المحدث : صحيح        </p>
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 20px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_41">1</div>
+        
+        <!-- الزر برمز النجمة فقط -->
+        <button class="btn-count" style="font-size: 1.5rem;" onclick="countdown('m_41', 1)">✶</button>
+        
+        <button class="btn-reset" onclick="resetCounter('m_41', 1)">↺</button>
+
+        <!-- رابط التفاصيل -->
+        <span class="more-details" onclick="openModal(`إذا أصبحَ أحدُكُم فليقُلْ : اللَّهمَّ بِكَ أصبَحنا، وبِكَ أمسَينا، وبِكَ نَحيا وبِكَ نَموتُ وإليكَ النُّشورُ، وإذا أمسى فليقُلْ: اللَّهمَّ بِكَ أمسَينا وبِكَ أصبَحنا وبِكَ نَحيا وبِكَ نموتُ ، وإليكَ المصيرُ
+خلاصة حكم المحدث : حسن صحيح
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : الكلم الطيب | الصفحة أو الرقم : 20
+| التخريج : أخرجه الترمذي (3391)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="card-body">
+        <!-- مساحة النص -->
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">ْ
+      أََمسينا وَأَمسى الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ ، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَْه الليلةِ فَتْحَهُا وَنَصْرَهُا وَنُورَهُا وَبَرَكَتَهُا وَهِدَايَتَهُا ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهِا وَشَرِّ مَا بَعْدَهُا</p>
+
+        <!-- جزئية الوصف -->
+         <p style="font-size: 0.85rem; color: #aaa; margin-top: 15px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5; display: block;">الراوي : - | المحدث : ابن القيم | المصدر : زاد المعاد الصفحة أو الرقم : 2/340        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 20px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_5">1</div>
+        
+        <button class="btn-count" style="font-size: 1.5rem;" onclick="countdown('m_5', 1)">✶</button>
+        
+        <button class="btn-reset" onclick="resetCounter('m_5', 1)">↺</button>
+
+        <!-- رابط التفاصيل -->
+        <span class="more-details" onclick="openModal(`وَقَالَ : ( إِذَا أَصْبَحَ أَحَدُكُمْ، فَلْيَقُلْ : أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ ، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ فَتْحَهُ وَنَصْرَهُ وَنُورَهُ وَبَرَكَتَهُ وَهِدَايَتَهُ ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهِ وَشَرِّ مَا بَعْدَهُ، ثُمَّ إِذَا أَمْسَى ، فَلْيَقُلْ مِثْلَ ذَلِكَ ) حَدِيثٌ حَسَنٌ . [زاد المعاد، صفحة ٣٤٠]`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهُمَّ إِنِّي أََْمسيت أُشْهِدُكَ، وَأُشْهِدُ حَمَلَةَ عَرْشِكَ، وَمَلَائِكَتَكَ، وَجَمِيعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلَّا أَنْتَ وَحْدَكَ لَا شَرِيكَ لَكَ، وَأَنَّ مُحَمَّدًا عَبْدُكَ وَرَسُولُكَ</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b> من قال حين يصبحُ أو يمسي: اللهمَّ إني أصبحتُ أشهدُكَ وأشهدُ حملةَ عرشِكَ، وملائكتَكَ وجميعَ خلقِك بأنَّك أنت اللهُ لا إلهَ إلا أنتَ وحدك لا شريكَ لك، وأنَّ محمَّدًا عبدُك ورسولُك أعتقَ اللهُ ربُعَه من النَّارِ، ومن قالها مرَّتين أعتقَ اللهُ نصفَه من النَّارِ، ومن قالها ثلاثًا أعتقَ اللهُ ثلاثةَ أرباعِه من النَّارِ، فإن قالها أربعًا أعتقَه اللهُ من النَّارِ
+خلاصة حكم المحدث : إسناده حسن
+الراوي : أنس بن مالك | المحدث : ابن باز | المصدر : مجموع فتاوى ابن باز الصفحة أو الرقم : 26/29</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_40">4</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_40', 4)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_40', 4)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`عن أبن باز: الحديث حسن لا بأس به، ويستحب أن تقولها أربع مرات في الليل والنهار، فإذا مت من يومك كان هذا من أسباب عتقك من النار، وهكذا في الليلة، هذا من أسباب العتق من النار، وهكذا الأذكار الشرعية الواردة عن النبي ﷺ في أول النهار وفي آخره، يجتهد في الإتيان بها،`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">أمسينا على فطرة الإسلام، وعلى كلمة الإخلاص، وعلى دين نبينا محمد ﷺ، وعلى ملّةِ أبينا إبراهيمَ حنيفًا مسلمًا وما كان من المشركين.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>الراوي : عبدالرحمن بن أبزى | المحدث : شعيب الأرناؤوط | المصدر : تخريج المسند لشعيب | الصفحة أو الرقم : 15367
+| التخريج : أخرجه النسائي في ((السنن الكبرى)) (9829)، وأحمد (15367) واللفظ له</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_38">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_38', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_38', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`كان رسولُ اللهِ صلَّى اللهُ عليه وسلَّمَ يُعلِّمُنا إذا أصبَحْنا: أصبَحْنا على فِطْرةِ الإسلامِ، وكَلمةِ الإخلاصِ، وسُنَّةِ نَبيِّنا محمَّدٍ صلَّى اللهُ عليه وسلَّمَ، ومِلَّةِ أَبينا إبراهيمَ حَنيفًا مُسلِمًا، وما كان منَ المُشرِكينَ، وإذا أمسَيْنا مثلَ ذلك.
+الراوي : أبي بن كعب | المحدث : شعيب الأرناؤوط | المصدر : تخريج المسند لشعيب
+الصفحة أو الرقم: 21144 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه عبدالله بن أحمد في ((زوائد المسند)) (21144) واللفظ له، والطبراني في ((الدعاء)) (293)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ ما أمسى بي من نِعمةٍ أو بأحدٍ من خلقِك فمنكَ وحدَك، لا شريكَ لَك، فلَك الحمدُ، ولَك الشُّكرُ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b> خلاصة حكم المحدث : إسناده ضعيف
+الراوي : عبدالله بن غنام البياضي | المحدث : الألباني | المصدر : الكلم الطيب الصفحة أو الرقم : 260px
+يجوز الأخذ به كذكر.</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_37">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_37', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_37', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قالَ حينَ يُصبِحُ: اللَّهمَّ ما أصبحَ بي من نِعمةٍ أو بأحدٍ من خلقِك فمنكَ وحدَك، لا شريكَ لَك، فلَك الحمدُ، ولَك الشُّكرُ، فقد أدَّى شُكرَ يومِه، ومن قالَ مثلَ ذلِك حينَ يُمسي، فقد أدَّى شُكرَ ليلتِه
+خلاصة حكم المحدث : إسناده ضعيف
+الراوي : عبدالله بن غنام البياضي | المحدث : الألباني | المصدر : الكلم الطيب الصفحة أو الرقم : 26
+التخريج : أخرجه أبو داود (5073)، والنسائي في ((السنن الكبرى)) (9835)، والبيهقي في ((شعب الإيمان)) (4368) باختلاف يسير`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ فاطِرَ السَّمَواتِ والأرضِ، عالِمَ الغَيبِ والشَّهادةِ، رَبَّ كُلِّ شَيءٍ ومَليكَه، أشهَدُ أنْ لا إلهَ إلَّا أنتَ، أعوذُ بِكَ مِن شَرِّ نَفْسي ومِن شَرِّ الشَّيطانِ وشِركِه.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>أن أبا بكرٍ الصديقَ رضي الله عنه قال يا رسولَ اللهِ مرني بكلماتٍ أقولُهُن إذا أصبحتُ وإذا أمسيتُ, قال قل: اللهم فاطرَ السمواتِ والأرضِ عالمَ الغيبِ والشهادةِ ربَّ كلِّ شيءٍ ومليكَه، أشهدُ أن لا إله إلا أنت، أعوذُ بك من شرِّ نفسي، وشرِّ الشيطانِ وشِرْكِه. قال: قلْها إذا أصبحتَ, وإذا أمسيتَ، وإذا أخذتَ مضجعَك.
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5067 | خلاصة حكم المحدث : صحيح</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_35">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_35', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_35', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`أنَّ أبا بَكرٍ الصِّدِّيقَ رَضيَ اللهُ عنهما قال: يا رَسولَ اللهِ، مُرْني بكَلِماتٍ أقولُهُنَّ إذا أصبَحتُ، وإذا أمسَيتُ. قال: قُلِ: اللَّهمَّ فاطِرَ السَّمَواتِ والأرضِ، عالِمَ الغَيبِ والشَّهادةِ، رَبَّ كُلِّ شَيءٍ ومَليكَه، أشهَدُ أنْ لا إلهَ إلَّا أنتَ، أعوذُ بِكَ مِن شَرِّ نَفْسي ومِن شَرِّ الشَّيطانِ وشِركِه. قال: قُلْها إذا أصبَحتَ وإذا أمسَيتَ وإذا أخَذتَ مَضجَعَكَ.
+خلاصة حكم المحدث : صحيح
+الراوي : أبو هريرة | المحدث : ابن دقيق العيد | المصدر : الاقتراح في بيان الاصطلاح | الصفحة أو الرقم : 128
+| التخريج : أخرجه أبو داود (5067)، والترمذي (3392)، وأحمد (51) باختلاف يسير`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ أنتَ ربِّي لا إلهَ إلَّا أنتَ خلَقْتَني وأنا أمتك وأنا على عهدِكَ ووَعْدِكَ ما استطَعْتُ أعوذُ بكَ مِن شرِّ ما صنَعْتُ وأبوءُ لكَ بنعمتِكَ علَيَّ وأبوءُ لكَ بذُنوبي فاغفِرْ لي إنَّه لا يغفِرُ الذُّنوبَ إلَّا أنتَ
+</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>سيِّدُ الاستغفارِ أنْ يقولَ العبدُ : اللَّهمَّ أنتَ ربِّي وأنا عبدُكَ لا إلهَ إلَّا أنتَ خلَقْتَني وأنا عبدُكَ أصبَحْتُ على عهدِكَ ووَعْدِكَ ما استطَعْتُ أعوذُ بكَ مِن شرِّ ما صنَعْتُ وأبوءُ لكَ بنعمتِكَ علَيَّ وأبوءُ لكَ بذُنوبي فاغفِرْ لي إنَّه لا يغفِرُ الذُّنوبَ إلَّا أنتَ
+خلاصة حكم المحدث : أخرجه في صحيحه
+الراوي : شداد بن أوس | المحدث : ابن حبان | المصدر : صحيح ابن حبان | الصفحة أو الرقم : 932</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_34">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_34', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_34', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`سَيِّدُ الاستِغفارِ أن تَقولَ: اللهُمَّ أنتَ رَبِّي لا إلَهَ إلَّا أنتَ، خَلَقتَني وأنا عَبدُك، وأنا على عَهدِك ووَعدِك ما استَطَعتُ، أعوذُ بك مِن شَرِّ ما صَنَعتُ، أبوءُ لك بنِعمَتِك عَلَيَّ، وأبوءُ لك بذَنبي، فاغفِرْ لي؛ فإنَّه لا يَغفِرُ الذُّنوبَ إلَّا أنتَ. قال: ومَن قالها مِنَ النَّهارِ موقِنًا بها، فماتَ مِن يَومِه قَبلَ أن يُمسيَ، فهو مِن أهلِ الجَنَّةِ، ومَن قالها مِنَ اللَّيلِ وهو موقِنٌ بها، فماتَ قَبلَ أن يُصبِحَ، فهو مِن أهلِ الجَنَّةِ.
+الراوي : شداد بن أوس | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 6306 | خلاصة حكم المحدث : [صحيح]
+التخريج : من أفراد البخاري على مسلم
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ عافِني في بَدَني، اللَّهمَّ عافِني في سَمْعي، اللَّهمَّ عافِني في بَصَري، لا إلهَ إلَّا أنتَ،اللَّهمَّ إنِّي أَعوذُ بكَ منَ الكُفرِ والفَقرِ، اللَّهمَّ إنِّي أَعوذُ بِكَ مِن عَذابِ القَبرِ، لا إلهَ إلَّا أنتَ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>قال عبدالرحمن بن أبي بكرة يا أَبتِ، إنِّي أَسمَعُك تَدْعو كلَّ غَداةٍ: اللَّهمَّ عافِني في بَدَني، اللَّهمَّ عافِني في سَمْعي، اللَّهمَّ عافِني في بَصَري، لا إلهَ إلَّا أنتَ؛ تُعيدُها ثلاثًا حينَ تُصبِحُ، وثَلاثًا حينَ تُمسي؟ فَقال: إنِّي سَمِعتُ رَسولَ اللهِ صلَّى اللهُ عليهِ وسلَّم يَدْعو بِهنَّ، فأَنا أُحِبُّ أن أَستَنَّ بِسُنَّتِه. قال عبَّاسٌ فيهِ: وتَقولُ: اللَّهمَّ إنِّي أَعوذُ بكَ منَ الكُفرِ والفَقرِ، اللَّهمَّ إنِّي أَعوذُ بِكَ مِن عَذابِ القَبرِ، لا إلهَ إلَّا أنتَ، تُعيدُها ثَلاثًا حينَ تُصبِح، وثَلاثًا حينَ تُمسي، فتَدْعو بهِنَّ، فأُحِبُّ أن أَستَنَّ بِسُنَّتِه.
+خلاصة حكم المحدث : إسناده حسن
+الراوي : أبو بكرة نفيع بن الحارث | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 5090</p>
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_33">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_33', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_33', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`
+مسند أحمد (34/ 74 ط الرسالة)
+: 20430 - حدثنا أبو عامر، حدثنا عبد الجليل، حدثني جعفر بن ميمون، حدثني عبد الرحمن بن أبي بكرة أنه قال لأبيه: يا أبه ، إني أسمعك تدعو كل غداة: " اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت " تعيدها ثلاثا حين تصبح، وثلاثا حين تمسي. وتقول: " اللهم إني أعوذ بك من الكفر والفقر، اللهم إني أعوذ بك من عذاب القبر، لا إله إلا أنت " تعيدها حين تصبح ثلاثا، وثلاثا حين تمسي. قال: نعم يا بني، إني سمعت النبي صلى الله عليه وسلم يدعو بهن، فأحب أن أستن بسنته. قال: وقال النبي صلى الله عليه وسلم: " دعوات المكروب: اللهم رحمتك أرجو، فلا تكلني إلى نفسي طرفة عين، أصلح لي شأني كله، لا إله إلا أنت "
+`)"
+
+>تفاصيل أكثر</span
+
+</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللَّهمَّ إنِّي أسألُك العافيةَ في الدُّنيا والآخرةِ اللَّهمَّ أسألُك العفوَ والعافيةَ في ديني ودنيايَ وأَهلي ومالي اللَّهمَّ استر عوراتي وآمِن رَوعاتي اللَّهمَّ احفظني من بينِ يدىَّ ومن خَلفي وعن يَميني وعَن شِمالي ومن فَوقي وأعوذُ بعظَمتِك أن اغتالَ من تحتي</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>الراوي : عبدالله بن عمر | المحدث : الألباني | المصدر : الكلم الطيب | الصفحة أو الرقم : 27</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_32">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_32', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_32', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`لم يكنْ رسولُ اللهِ صلى الله عليه وسلم يَدَعُ هؤلاء الدعواتِ حينَ يُمسي، وحينَ يُصبِحُ :اللهم إني أسألُك العافيةَ في الدنيا والآخرةِ ، اللهم إني أسألُك العفوَ والعافيةَ في ديني ودنياي وأهلي ومالي ، اللهم استرْ عورتي وآمنْ روعاتي ، اللهم احفظْني مِن بين يديَّ ومن خلفي وعن يميني وعن شمالي ومن فوقي ، وأعوذُ بعظمتِك أن أُغتالَ مِن تحتي.
+الراوي : عبدالله بن عمر | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5074 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه أبو داود (5074) واللفظ له، وابن ماجه (3871)، وأحمد (4785)
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">بسمِ اللَّهِ الَّذي لا يضرُّ معَ اسمِهِ شيءٌ في الأرضِ ولا في السَّماءِ وَهوَ السَّميعُ العليمُ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>ما من عبدٍ يقولُ في صباحِ كلِّ يومٍ ومساءِ كلِّ ليلةٍ بسمِ اللَّهِ الَّذي لا يضرُّ معَ اسمِهِ شيءٌ في الأرضِ ولا في السَّماءِ وَهوَ السَّميعُ العليمُ ثلاثَ مرَّاتٍ إلا لم يضرَّهُ شيءٌ
+خلاصة حكم المحدث : صحيح
+الراوي : - | المحدث : ابن القيم | المصدر : زاد المعاد | الصفحة أو الرقم : 2/338</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_31">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_31', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_31', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قال: بسمِ اللهِ الذي لا يَضرُ مع اسمِه شيءٌ في الأرضِ ولا في السماءِ وهو السميعُ العليمِ . ثلاثُ مراتٍ ، لم تصبْه فجأةُ بلاءٍ حتى يُصبحَ ، ومَن قالها حينَ يُصبحُ ثلاثَ مراتٍ لم تُصبْه فجأةُ بلاءٍ حتى يُمسي.
+الراوي : عثمان بن عفان | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5088 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه أبو داود (5088) واللفظ له، والترمذي (3388)، والنسائي في ((السنن الكبرى)) (9843)، وابن ماجه (3869)، وأحمد (446)
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">رَضيتُ باللَّهِ ربًّا، وبالإسلامِ دينًا، وبِمُحمَّدٍ رسولًا</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>عن أبي سَلَّامٍ قال: كُنَّا قُعودًا في مَسجِدِ حِمصَ، إذ مَرَّ رَجُلٌ فقالوا: هذا خَدَمَ رسولَ اللهِ صلَّى اللهُ عليه وسلَّمَ، قال: فنَهَضتُ فسَأَلتُه فقُلتُ: حَدِّثْنا بما سَمِعتَ من رسولِ اللهِ صلَّى اللهُ عليه وسلَّمَ لم يَتَداوَلْه الرِّجالُ فيما بيْنَكما، قال: سَمِعتُ رسولَ اللهِ صلَّى اللهُ عليه وسلَّمَ يقولُ: ما مِن عبدٍ مُسلِمٍ يقولُ ثلاثَ مرَّاتٍ حين يُمْسي أو يُصبِحُ: رَضيتُ باللهِ رَبًّا، وبالإسلامِ دِينًا، وبمُحمَّدٍ نبيًّا؛ إلَّا كان حقًّا على اللهِ أنْ يُرضِيَه يَومَ القيامةِ.
+خلاصة حكم المحدث : صحيح لغيره
+الراوي : رجال من الصحابة | المحدث : شعيب الأرناؤوط | المصدر : تخريج المسند لشعيب | الصفحة أو الرقم : 23111
+ </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_30">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_30', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_30', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`من قالَ: رَضيتُ باللَّهِ ربًّا، وبالإسلامِ دينًا، وبِمُحمَّدٍ رسولًا، وجَبت لَهُ الجنَّةُ
+خلاصة حكم المحدث : صحيح
+الراوي : أبو سعيد الخدري | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 1529
+| التخريج : أخرجه أبو داود (1529)، ومسلم (1884)، والنسائي في ((السنن الكبرى)) (9748) بلفظه.`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">حسبيَ اللهُ، لا إلهَ إلَّا هوَ ، عليهِ توكَّلْتُ وهوَ ربُّ العرشِ العَظيمِ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>عن أبي الدرداءِ قال : ] من قال إذا أصبح وإذا أمسَى : حسبِيَ اللهُ لا إلهَ إلا هو عليه توكلتُ وهو ربُّ العرشِ العظيمِ سبعَ مراتٍ كفاه اللهُ ما أهمَّه
+خلاصة حكم المحدث : موقوف إسناده جيد
+الراوي : - | المحدث : ابن باز | المصدر : مجموع فتاوى ابن باز الصفحة أو الرقم : 294/9</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_29">7</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_29', 7)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_29', 7)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`سمِعتُ أبا الدَّرداءِ يقولُ : ما من عَبدٍ يقولُ : حسبيَ اللهُ، لا إلهَ إلَّا هوَ ، عليهِ توكَّلْتُ وهوَ ربُّ العرشِ العَظيمِ ، سَبعَ مرَّاتٍ، صادِقًا كان بها أو كاذبًا، إلَّا كفاه اللهُ ما همَّهُ
+خلاصة حكم المحدث : هذه زيادة غريبة ، ثم رواه في ترجمة عبد الرزاق أبي محمد ، عن أحمد بن عبد الله بن عبد الرزاق ، عن جده عبد الرزاق بن عمر ، يسنده فرفعه ، فذكر مثله بالزيادة ، وهذا منكر
+الراوي : هجيمة بنت حيي أم الدرداء الصغرى | المحدث : ابن كثير | المصدر : تفسير القرآن العظيم الصفحة أو الرقم : 4/181
+التخريج : أخرجه أبو داود (5081)، وابن السني في ((عمل اليوم والليلة)) (71)، وابن عساكر في ((تاريخ دمشق)) (36/ 149) باختلاف يسير.`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">سُبحانَ اللهِ وبحَمْدِه عَدَدَ خَلْقِه، ورِضا نَفْسِه، وزِنةَ عَرْشِه، ومِدادَ كَلِماتِه</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>خرج رَسولُ اللهِ صلَّى اللهُ عليه وسلَّم من عند جُويريةَ -وكان اسمُها بَرَّةَ، فحَوَّلَ اسمَها- فخرج وهي في مُصَلَّاها، ورجع وهي في مصَلَّاها، فقال: لم تزالي في مُصَلَّاكِ هذا؟! قالت: نَعَمْ. قال: قد قُلتُ بَعْدَكِ أربَعَ كَلِماتٍ ثلاثَ مرَّاتٍ لو وُزِنَت بما قُلْتِ لوزنَتْهنَّ: سُبحانَ اللهِ وبحَمْدِه عَدَدَ خَلْقِه، ورِضا نَفْسِه، وزِنةَ عَرْشِه، ومِدادَ كَلِماتِه
+خلاصة حكم المحدث : سكت عنه [وقد قال في رسالته لأهل مكة كل ما سكت عنه فهو صالح]
+الراوي : عبدالله بن عباس | المحدث : أبو داود | المصدر : سنن أبي داود | الصفحة أو الرقم : 1503</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_28">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_28', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_28', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`سنن أبي داود (2/ 81)
+1503 - حدثنا داود بن أمية، حدثنا سفيان بن عيينة، عن محمد بن عبد الرحمن، مولى آل طلحة، عن كريب، عن ابن عباس، قال: خرج رسول الله صلى الله عليه وسلم من عند جويرية، وكان اسمها برة، فحول اسمها، فخرج وهي في مصلاها ورجع وهي في مصلاها، فقال: لم تزالي في مصلاك هذا؟، قالت: نعم، قال: قد قلت بعدك أربع كلمات، ثلاث مرات، لو وزنت بما قلت لوزنتهن، سبحان الله وبحمده عدد خلقه، ورضا نفسه، وزنة عرشه، ومداد كلماته`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">يا حيُّ يا قيُّومُ برحمتِك أستغيثُ، أَصلِحْ لي شأني كلَّه، و لا تَكِلْني إلى نفسي طرفةَ عَيْنٍ</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>ما يمنعُكِ أن تسمَعي ما أُوصيكِ به ؟ أن تقولي إذا أصبحْتِ و إذا أمسَيتِ : يا حيُّ يا قيُّومُ برحمتِك أستغيثُ، أَصلِحْ لي شأني كلَّه، و لا تَكِلْني إلى نفسي طرفةَ عَيْنٍ
+خلاصة حكم المحدث : حسن
+الراوي : أنس بن مالك | المحدث : الألباني | المصدر : صحيح الترغيب الصفحة أو الرقم : 661</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_27">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_27', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_27', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`كانَ النَّبيُّ صلَّى اللَّهُ علَيهِ وسلَّمَ إذا كربَهُ أمرٌ قالَ: يا حيُّ يا قيُّومُ برَحمتِكَ أستغيثُ
+الراوي : أنس بن مالك | المحدث : الألباني | المصدر : صحيح الترمذي
+الصفحة أو الرقم: 3524 | خلاصة حكم المحدث : حسن
+التخريج : أخرجه الترمذي (3524) واللفظ له، وابن السني في ((عمل اليوم والليلة)) (337)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">سبحانَ اللَّهِ وبحمدِهِ</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>مَن قالَ حينَ يصبحُ وحينَ يُمسي : سبحانَ اللَّهِ وبحمدِهِ مائةَ مرَّةٍ : لم يأتِ أحدٌ يومَ القيامةِ بأفضلَ ممَّا جاءَ بِهِ ، إلَّا أحدٌ قالَ مثلَ ما قالَ ، أو زادَ علَيهِ
+خلاصة حكم المحدث : صحيح
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح الترمذي | الصفحة أو الرقم : 3469</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_26">100</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_26', 100)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_26', 100)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قال: سُبحانَ اللهِ وبحَمدِه، في يَومٍ مِائةَ مَرَّةٍ، حُطَّت خَطاياه وإن كانَت مِثلَ زَبَدِ البَحرِ.
+الراوي : أبو هريرة | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 6405 | خلاصة حكم المحدث : [صحيح]
+التخريج : أخرجه البخاري (6405) واللفظ له، ومسلم (2691) مطولاً
+
+مَن قالَ : سُبحانَ اللَّهِ العظيمِ وبحمدِهِ ، غُرِسَت لَهُ نَخلةٌ في الجنَّةِ
+خلاصة حكم المحدث : صحيح
+الراوي : جابر بن عبدالله | المحدث : الألباني | المصدر : صحيح الترمذي | الصفحة أو الرقم : 3465
+| التخريج : أخرجه الترمذي (3464) واللفظ له، والنسائي في ((السنن الكبرى)) (10663) باختلاف يسير
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">لا إلهَ إلا اللهُ وحدَه ، لا شريكَ له ، له الملكُ ، وله الحمدُ ، وهو على كلِّ شيءٍ قديرٍ .</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>من قال إذا أصبح : لا إله إلا اللهُ وحده لا شريك له ، له الملكُ وله الحمدُ ، وهو على كلِّ شيءٍ قديرٌ ، كان له عِدلُ رقبةٍ ، من ولد إسماعيلَ ، وكُتِبَتْ له بها عشرُ حسناتٍ ، وحَطَّ عنه بها عشرَ سيِّئاتٍ ، ورَفع له بها عشرَ درجاتٍ ، وكان في حِرْزٍ من الشيطانِ حتى يُمسيَ ، وإذا قالها إذا أمسى كان له مثلُ ذلك حتى يُصبِحَ
+خلاصة حكم المحدث : صحيح
+الراوي : أبو عياش الزرقي | المحدث : الألباني | المصدر : صحيح الجامع | الصفحة أو الرقم : 6418</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_25">10</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_25', 10)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_25', 10)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قال إذا أصبحَ : لا إلهَ إلا اللهُ وحدَه ، لا شريكَ له ، له الملكُ ، وله الحمدُ ، وهو على كلِّ شيءٍ قديرٍ ؛ كان له عدلُ رقبةٍ مِن ولدِ إسماعيلَ ، وكتب له عشرَ حسناتٍ ، وحطَّ عنه عشرَ سيئاتٍ ، ورفع له عشرَ درجاتٍ ، وكان في حِرْزٍ مِن الشيطانِ حتى يُمسي . وإن قالها إذا أمسى كان له مثلُ ذلك حينَ يُصبحُ .
+الراوي : أبو عياش الزرقي | المحدث : الألباني | المصدر : صحيح أبي داود
+الصفحة أو الرقم: 5077 | خلاصة حكم المحدث : صحيح
+التخريج : أخرجه أبو داود (5077) واللفظ له، والنسائي في ((السنن الكبرى)) (9855)، وابن ماجه (3867)، وأحمد (16583)`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللهم صلِ و سلم و بارك على نبينا محمد</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>روى الطبراني عن أبي الدرداء رضي الله عنه، قال: قال رسول الله - صلى الله عليه وسلم -: "من صلى علي حين يصبح عشرًا، وحين يمسي عشرًا أدركته شفاعتي يوم القيامة".</p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_24">10</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_24', 10)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_24', 10)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`روى الترمذي عَنْ أَبِي هُرَيْرَةَ، عَنِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: مَا جَلَسَ قَوْمٌ مَجْلِسًا لَمْ يَذْكُرُوا اللَّهَ فِيهِ، وَلَمْ يُصَلُّوا عَلَى نَبِيِّهِمْ، إِلَّا كَانَ عَلَيْهِمْ تِرَةً، فَإِنْ شَاءَ عَذَّبَهُمْ وَإِنْ شَاءَ غَفَرَ لَهُمْ. وقوله (ترة) أي حسرة وندامة.
+        
+         ما مِن أحدٍ يسلِّمُ عليَّ إلَّا ردَّ اللَّهُ عليَّ روحي حتَّى أردَّ علَيهِ السَّلامَ
+خلاصة حكم المحدث : حسن
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 2041
+| التخريج : أخرجه أبو داود (2041) واللفظ له، وأحمد (10815)
+
+لا تجعلوا بيوتَكُم قبورًا، ولا تجعلوا قَبري عيدًا، وصلُّوا عليَّ فإنَّ صلاتَكُم تبلغُني حَيثُ كنتُمْ
+خلاصة حكم المحدث : صحيح
+الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 2042
+| التخريج : أخرجه أبو داود (2042) واللفظ له، وأحمد (8790)
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+        
+        </p></section>
+        <section id="sleep" class="hidden"><button class="back-btn" onclick="showSection('home')">⇒ عودة</button><p style="text-align:center;">
+          
+          <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">بِاسْمِكَ رَبِّـي وَضَعْـتُ جَنْـبي ، وَبِكَ أَرْفَعُـه، فَإِن أَمْسَـكْتَ نَفْسـي فارْحَـمْها ، وَإِنْ أَرْسَلْتَـها فاحْفَظْـها بِمـا تَحْفَـظُ بِه عِبـادَكَ الصّـالِحـين.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>إذا أوى أحَدُكُم إلى فِراشِه فليَنفُضْ فِراشَه بداخِلةِ إزارِه؛ فإنَّه لا يَدري ما خَلَفَه عليه، ثُمَّ يقولُ: باسمِك رَبِّ وضَعتُ جَنبي، وبك أرفَعُه، إن أمسَكتَ نَفسي فارحَمها، وإن أرسَلتَها فاحفَظْها بما تَحفَظُ به عِبادَك الصَّالِحينَ.
+الراوي : أبو هريرة | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 6320  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_a">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_a', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_a', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`إذا أوى أحَدُكُم إلى فِراشِه فليَأخُذْ داخِلةَ إزارِه، فليَنفُضْ بها فِراشَه، وليُسَمِّ اللهَ؛ فإنَّه لا يَعلَمُ ما خَلَفَه بَعدَه على فِراشِه، فإذا أرادَ أن يَضطَجِعَ فليَضطَجِعْ على شِقِّه الأيمَنِ، وليَقُلْ: سُبحانَكَ اللَّهمَّ رَبِّي بكَ وضَعتُ جَنبي، وبكَ أرفَعُه، إن أمسَكتَ نَفسي فاغفِرْ لَها، وإن أرسَلتَها فاحفَظْها بما تَحفَظُ به عِبادَكَ الصَّالِحينَ. وفي روايةٍ: بهذا الإسنادِ، وقال: ثُمَّ ليَقُلْ: باسمِكَ رَبِّي وضَعتُ جَنبي، فإن أحيَيتَ نَفسي فارحَمْها.
+خلاصة حكم المحدث : [صحيح]
+الراوي : أبو هريرة | المحدث : مسلم | المصدر : صحيح مسلم | الصفحة أو الرقم : 2714`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+         <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللّهُـمَّ أنـت خَلَـقْتَ نَفْسـي وَأَنْـتَ تَوَفّـاهـا لَكَ ممَـاتـها وَمَحْـياها ، إِنْ أَحْيَيْـتَها فاحْفَظْـها ، وَإِنْ أَمَتَّـها فَاغْفِـرْ لَـها . اللّهُـمَّ إِنَّـي أَسْـأَلُـكَ العـافِـيَة.
+</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>خلاصة حكم المحدث : صحيح
+الراوي : عبدالله بن عمر | المحدث : الألباني | المصدر : صحيح الجامع | الصفحة أو الرقم : 1270  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_b">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_b', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_b', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`أنَّه أمَرَ رَجُلًا إذا أخَذَ مَضجَعَه قال: اللَّهمَّ خَلَقتَ نَفسي، وأنتَ تَوفَّاها، لكَ مَماتُها ومَحياها، إن أحيَيتَها فاحفَظْها، وإن أمَتَّها فاغفِرْ لَها، اللَّهمَّ إنِّي أسألُكَ العافيةَ. فقال له رَجُلٌ: أسَمِعتَ هذا مِن عُمَرَ؟ فقال: مِن خَيرٍ مِن عُمَرَ؛ مِن رَسولِ اللهِ صلَّى اللهُ عليه وسلَّم.
+الراوي : عبد الله بن عمر | المحدث : مسلم | المصدر : صحيح مسلم
+الصفحة أو الرقم: 2712 | خلاصة حكم المحدث : [صحيح]
+التخريج : أخرجه مسلم (2712) بلفظه.
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+          <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللّهُـمَّ قِنـي عَذابَـكَ يَـوْمَ تَبْـعَثُ عِبـادَك</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b> كان رسول الله صلَّى اللَّهُ عليهِ وسلَّمَ يتوسد يمينه عند المنام ، ثمَّ يقول : رب ! قني عذابك يوم تبعث عبادك
+خلاصة حكم المحدث : صحيح
+الراوي : البراء بن عازب | المحدث : الألباني | المصدر : صحيح الترمذي الصفحة أو الرقم : 3399  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_c">3</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_c', 3)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_c', 3)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`عن رسولَ اللَّهِ صلَّى اللَّهُ عليهِ وسلَّمَ أنَّه كانَ إذا أرادَ أن يرقدَ وضعَ يدَه اليُمنَى تحتَ خدِّهِ ثمَّ يقولُ اللَّهمَّ قني عذابَك يومَ تبعثُ عبادَك ثلاثَ مرارٍ
+خلاصة حكم المحدث : صحيح دون قوله: "ثلاث مرار"
+الراوي : علي بن أبي طالب | المحدث : الألباني | المصدر : ضعيف أبي داود الصفحة أو الرقم : 5052`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+          <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">بِاسْـمِكَ اللّهُـمَّ أَمـوتُ وَأَحْـيا.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>خلاصة حكم المحدث : صحيح
+الراوي : حذيفة بن اليمان | المحدث : الألباني | المصدر : مختصر الشمائل | الصفحة أو الرقم : 217  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_d">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_d', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_d', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`كان النَّبيُّ صلَّى اللهُ عليه وسلَّم إذا أرادَ أن يَنامَ قال: باسمِكَ اللهُمَّ أموتُ وأحيا، وإذا استَيقَظَ مِن مَنامِه قال: الحَمدُ للهِ الذي أحيانا بَعدَ ما أماتَنا وإليه النُّشورُ.
+الراوي : حذيفة بن اليمان | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 6324 | خلاصة حكم المحدث : [صحيح]
+التخريج : من أفراد البخاري على مسلم
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+          <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">الـحَمْدُ للهِ الَّذي أَطْـعَمَنا وَسَقـانا، وَكَفـانا، وَآوانا، فَكَـمْ مِمَّـنْ لا كـافِيَ لَـهُ وَلا مُـؤْوي. </p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>الراوي : أنس بن مالك | المحدث : الألباني | المصدر : مختصر الشمائل | الصفحة أو الرقم : 219
+| التخريج : أخرجه مسلم (2715)  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_f">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_f', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_f', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`أنَّ رَسولَ اللهِ صلَّى اللهُ عليه وسلَّم كان إذا أوى إلى فِراشِه، قال: الحَمدُ للَّهِ الذي أطعَمَنا وسَقانا، وكَفانا وآوانا، فكَم مِمَّن لا كافيَ له ولا مُؤويَ.
+الراوي : أنس بن مالك | المحدث : مسلم | المصدر : صحيح مسلم
+الصفحة أو الرقم: 2715 | خلاصة حكم المحدث : [صحيح]`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+          <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللّهُـمَّ عالِـمَ الغَـيبِ وَالشّـهادةِ فاطِـرَ السّماواتِ وَالأرْضِ رَبَّ كُـلِّ شَـيءٍ وَمَليـكَه، أَشْهـدُ أَنْ لا إِلـهَ إِلاّ أَنْت، أَعـوذُ بِكَ مِن شَـرِّ نَفْسـي، وَمِن شَـرِّ الشَّيْـطانِ وَشِـرْكِه، وَأَنْ أَقْتَـرِفَ عَلـى نَفْسـي سوءاً أَوْ أَجُـرَّهُ إِلـى مُسْـلِم</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b> أنَّ أبا بَكرٍ الصِّدِّيقَ رَضيَ اللهُ عنهما قال: يا رَسولَ اللهِ، مُرْني بكَلِماتٍ أقولُهُنَّ إذا أصبَحتُ، وإذا أمسَيتُ. قال: قُلِ: اللَّهمَّ فاطِرَ السَّمَواتِ والأرضِ، عالِمَ الغَيبِ والشَّهادةِ، رَبَّ كُلِّ شَيءٍ ومَليكَه، أشهَدُ أنْ لا إلهَ إلَّا أنتَ، أعوذُ بِكَ مِن شَرِّ نَفْسي ومِن شَرِّ الشَّيطانِ وشِركِه. قال: قُلْها إذا أصبَحتَ وإذا أمسَيتَ وإذا أخَذتَ مَضجَعَكَ.
+خلاصة حكم المحدث : صحيح
+الراوي : أبو هريرة | المحدث : ابن دقيق العيد | المصدر : الاقتراح في بيان الاصطلاح | الصفحة أو الرقم : 128  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_g">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_g', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_g', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`عن أبي راشد الحبراني: أتيت عبد الله بن عمرو فقلت له: حدثنا بما سمعت من رسول الله صلى الله عليه وسلم، فألقى إلي صحيفة فقال: هذا ما كتب لي النبي صلى الله عليه وسلم فنظرت فيها، فإذا فيها: إن أبا بكر الصديق رضي الله عنه سأل النبي صلى الله عليه وسلم قال: يا رسول الله، علمني ما أقول إذا أصبحت وإذا أمسيت، فقال: يا أبا بكرٍ ! قل : اللهمَّ فاطرَ السماواتِ والأرضِ ، عالمَ الغيبِ والشهادةِ ، ربَّ كلِّ شيءٍ ومليكَه ، أعوذُ بك من شرِّ نفسي ، ومن شرِّ الشيطانِ وشِركِه ، و أن أقترفَ على نفسي سوءًا ، أو أَجُرَّه إلى مسلمٍ
+خلاصة حكم المحدث : صحيح
+الراوي : عبدالله بن عمرو | المحدث : الألباني | المصدر : صحيح الأدب المفرد | الصفحة أو الرقم : 914
+| التخريج : أخرجه الترمذي (3529)، وأحمد (6597) باختلاف يسير، والبخاري في ((الأدب المفرد)) (1204) واللفظ له`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+          <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللّهُـمَّ أَسْـلَمْتُ نَفْـسي إِلَـيْكَ، وَفَوَّضْـتُ أَمْـري إِلَـيْكَ، وَوَجَّـهْتُ وَجْـهي إِلَـيْكَ، وَأَلْـجَـاْتُ ظَهـري إِلَـيْكَ، رَغْبَـةً وَرَهْـبَةً إِلَـيْكَ، لا مَلْجَـأَ وَلا مَنْـجـا مِنْـكَ إِلاّ إِلَـيْكَ، آمَنْـتُ بِكِتـابِكَ الّـذي أَنْزَلْـتَ وَبِنَبِـيِّـكَ الّـذي أَرْسَلْـت.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>خلاصة حكم المحدث : أخرجه في صحيحه
+الراوي : البراء بن عازب | المحدث : ابن حبان | المصدر : صحيح ابن حبان | الصفحة أو الرقم : 5542  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_h">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_h', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_h', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(إذا أتَيتَ مَضجَعَكَ فتَوضَّأْ وُضوءَكَ للصَّلاةِ، ثُمَّ اضطَجِعْ على شِقِّكَ الأيمَنِ، ثُمَّ قُلْ: اللهُمَّ أسلَمتُ وجهي إليكَ، وفَوَّضتُ أمري إليكَ، وألجَأتُ ظَهري إليكَ، رَغبةً ورَهبةً إليكَ، لا مَلجَأَ ولا مَنجا مِنكَ إلَّا إليكَ، اللهُمَّ آمَنتُ بكِتابِكَ الذي أنزَلتَ، وبِنَبيِّكَ الذي أرسَلتَ، فإن مُتَّ مِن لَيلَتِكَ فأنتَ على الفِطرةِ، واجعَلْهنَّ آخِرَ ما تَتَكَلَّمُ به. قال: فرَدَّدتُها على النَّبيِّ صلَّى اللهُ عليه وسلَّم، فلَمَّا بَلَغتُ: اللهُمَّ آمَنتُ بكِتابِكَ الذي أنزَلتَ قُلتُ: ورَسولِكَ، قال: لا، ونَبيِّكَ الذي أرسَلتَ.
+الراوي : البراء بن عازب | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 247 | خلاصة حكم المحدث : [صحيح]
+التخريج : أخرجه البخاري (247)، ومسلم (2710)
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+          <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">سُبْحَانَ اللَّهِ، الْحَمْدُ لِلَّهِ، اللَّهُ أَكْبَرُ</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>أنَّ فاطِمةَ عليها السَّلامُ أتَتِ النَّبيَّ صلَّى اللهُ عليه وسلَّم تَسألُه خادِمًا، فقال: ألا أُخبِرُكِ ما هو خَيرٌ لَكِ منه؟ تُسَبِّحينَ اللهَ عِندَ مَنامِكِ ثَلاثًا وثَلاثينَ، وتَحمَدينَ اللهَ ثَلاثًا وثَلاثينَ، وتُكَبِّرينَ اللهَ أربَعًا وثَلاثينَ، ثُمَّ قال سُفيانُ: إحداهنَّ أربَعٌ وثَلاثونَ، فما تَرَكتُها بَعدُ، قيلَ: ولا لَيلةَ صِفِّينَ؟ قال: ولا لَيلةَ صِفِّينَ.
+خلاصة حكم المحدث : [صحيح]
+الراوي : علي بن أبي طالب | المحدث : البخاري | المصدر : صحيح البخاري | الصفحة أو الرقم : 5362  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_j">33</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_j', 33)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_j', 33)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`أنَّ فاطِمةَ عليها السَّلامُ شَكَت ما تَلقى مِن أثَرِ الرَّحا، فأتى النَّبيَّ صلَّى اللهُ عليه وسلَّم سَبيٌ، فانطَلَقَت فلَم تَجِدْه، فوجَدَت عائِشةَ فأخبَرَتها، فلَمَّا جاءَ النَّبيُّ صلَّى اللهُ عليه وسلَّم أخبَرَتْه عائِشةُ بمَجيءِ فاطِمةَ، فجاءَ النَّبيُّ صلَّى اللهُ عليه وسلَّم إلينا وقد أخَذنا مَضاجِعَنا، فذَهَبتُ لأقومَ، فقال: على مَكانِكُما. فقَعَدَ بينَنا حتَّى وجَدتُ بَردَ قدَمَيه على صَدري، وقال: ألا أُعَلِّمُكُما خَيرًا ممَّا سَألتُماني؟ إذا أخَذتُما مَضاجِعَكُما تُكَبِّرا أربَعًا وثَلاثينَ، وتُسَبِّحا ثَلاثًا وثَلاثينَ، وتَحمَدا ثَلاثًا وثَلاثينَ؛ فهو خَيرٌ لَكُما مِن خادِمٍ.
+الراوي : علي بن أبي طالب | المحدث : البخاري | المصدر : صحيح البخاري
+الصفحة أو الرقم: 3705 | خلاصة حكم المحدث : [صحيح]
+التخريج : أخرجه مسلم (2727)، وأحمد (1141)، وابن حبان (5524) بنحوه.
+
+`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+          <div class="card">
+    <div class="card-header">
+        <div class="dot"></div><div class="dot"></div>
+    </div>
+    
+    <div class="card-body">
+        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ
+اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ.</p>
+
+        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b> أن مَن قرأها عندَ النومِ لا يزالُ عليه من اللهِ حافظٌ ، ولا يقربُه شيطانٌ حتى يُصبِحَ<br>
+                        <small>المحدث : ابن باز | المصدر : مجموع فتاوى ابن باز | الصفحة أو الرقم : 454/3</small>  </p>
+
+        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_i">1</div>
+        
+        <!-- زر النجمة -->
+        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_i', 1)">✶</button>
+        
+        <!-- زر الإعادة الجديد (أكثر رقة) -->
+        <button class="btn-reset" onclick="resetCounter('m_i', 1)">↺</button>
+
+        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`...`)">تفاصيل أكثر</span>
+    </div>
+</div>
+
+
+        </p></section>
+        <section id="general" class="hidden">
+            <button class="back-btn" onclick="showSection('home')">⇒ عودة</button>
+            <div class="card">
+                <div class="card-body">
+                    <div style="font-size: 3.5rem; font-weight: bold; color: var(--color5); margin-bottom: 15px;" id="g_count">0</div>
+                    <button class="btn-count" style="background:var(--color5); box-shadow:0 5px 0 #d8a3c2" onclick="countup('g_count')">  ❤︎</button>
+                    <button class="btn-reset" onclick="resetCounter('g_count', 0)">تصفير ִーָ☾.</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- نافذة التفاصيل -->
+    <div id="myModal" class="modal">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div class="dot"></div><div class="dot"></div>
+                <div style="margin-right: auto; color: white; font-size: 1rem; cursor: pointer; font-weight: bold;" onclick="closeModal()">✕</div>
+            </div>
+            <div class="modal-body" id="modalText"></div>
+            <div style="padding: 15px; text-align: center; border-top: 1px solid #f9f0f6;">
+                <button class="btn-reset" style="margin-top: 0;" onclick="closeModal()">إغلاق . ̊</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    function toggleMenu() {
+        const side = document.getElementById('sidebar');
+        side.style.right = side.style.right === '0px' ? '-300px' : '0px';
+    }
+
+    function showSection(id) {
+        document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
+        if(document.getElementById('sidebar').style.right === '0px') toggleMenu();
+        window.scrollTo(0,0);
+    }
+
+    function countdown(id, startVal) {
+        const el = document.getElementById(id);
+        let val = parseInt(el.innerText);
+        if (val > 0) {
+            val--;
+            el.innerText = val; // تحديث الشاشة فقط
+            if (val === 0) setTimeout(() => { alert("تم الانتهاء ᥫ᭡"); }, 100);
+        } else {
+            el.innerText = startVal;
+        }
+    }
+
+    function countup(id) {
+        const el = document.getElementById(id);
+        el.innerText = parseInt(el.innerText) + 1;
+    }
+
+    function resetCounter(id, val) {
+        document.getElementById(id).innerText = val;
+    }
+
+    function openModal(text) {
+        document.getElementById('modalText').innerText = text;
+        document.getElementById('myModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    window.onclick = function(e) { if (e.target.id == 'myModal') closeModal(); }
+</script>
+</body>
+</html>

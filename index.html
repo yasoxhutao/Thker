@@ -9,18 +9,18 @@
             --color1: #D8B9EF; --color2: #C6B9F0; --color3: #EAB9F0;
             --color4: #B9BDF0; --color5: #F0B9D9; --white: #ffffff;
         }
-/* نجوم متوهجة في الخلفية */
-body::before {
-    content: "✶"; position: fixed; top: 15%; left: 10%; color: var(--color5); opacity: 0.4; font-size: 2rem; filter: blur(1px); animation: blink 3s infinite;
-}
-body::after {
-    content: "✧"; position: fixed; bottom: 20%; right: 10%; color: var(--color1); opacity: 0.3; font-size: 1.5rem; animation: blink 4s infinite;
-}
+        /* نجوم متوهجة في الخلفية */
+        body::before {
+            content: "✶"; position: fixed; top: 15%; left: 10%; color: var(--color5); opacity: 0.4; font-size: 2rem; filter: blur(1px); animation: blink 3s infinite;
+        }
+        body::after {
+            content: "✧"; position: fixed; bottom: 20%; right: 10%; color: var(--color1); opacity: 0.3; font-size: 1.5rem; animation: blink 4s infinite;
+        }
 
-@keyframes blink {
-    0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-}
+        @keyframes blink {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
 
         body { 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
@@ -51,7 +51,7 @@ body::after {
         .card-header { background: var(--color4); padding: 12px; display: flex; gap: 8px; }
         .dot { width: 11px; height: 11px; background: white; border-radius: 50%; opacity: 0.6; }
 
-.bow-divider {
+        .bow-divider {
             margin: 20px 0; color: var(--color5); font-size: 1.1rem;
             display: flex; align-items: center; justify-content: center; gap: 10px;
         }
@@ -66,17 +66,17 @@ body::after {
         .btn-count {
             background-color: var(--color2); color: white; border: none; padding: 16px; 
             width: 100%; border-radius: 15px; font-size: 1.1rem; cursor: pointer;
-            box-shadow: 0 5px 0px #b1a4db; font-weight: bold;
+            box-shadow: 0 5px 0px #b1a4db; font-weight: bold; position: relative;
+            transition: all 0.2s ease;
         }
         .btn-count:active { transform: translateY(3px); box-shadow: none; }
 
-.btn-count::after {
-    content: "✶"; position: absolute; top: -10px; left: -10px; color: var(--color3); font-size: 1.2rem; opacity: 0; transition: 0.3s;
-}
-.btn-count:hover::after {
-    opacity: 1; transform: rotate(20deg);
-}
-
+        .btn-count::after {
+            content: "✶"; position: absolute; top: -10px; left: -10px; color: var(--color3); font-size: 1.2rem; opacity: 0; transition: 0.3s;
+        }
+        .btn-count:hover::after {
+            opacity: 1; transform: rotate(20deg);
+        }
 
         .btn-reset {
             background: none; border: 1.2px solid var(--color5);
@@ -99,9 +99,13 @@ body::after {
             background-color: white; margin: 15% auto; border-radius: 20px; 
             width: 85%; max-width: 420px; border: 2px solid var(--color1);
             box-shadow: 8px 8px 0px var(--color1); overflow: hidden;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.3s ease; position: relative;
         }
-        .modal-header { background: var(--color1); padding: 12px; display: flex; gap: 8px; align-items: center; }
+        .modal-header { 
+            background: var(--color1); padding: 12px 20px; display: flex; 
+            justify-content: space-between; align-items: center; color: white; font-weight: bold;
+        }
+        .close-modal { cursor: pointer; font-size: 1.2rem; }
         .modal-body {
             padding: 25px; max-height: 50vh; overflow-y: auto;
             text-align: justify; line-height: 1.8; color: #7a6a85;
@@ -118,14 +122,14 @@ body::after {
             position: fixed; top: 0; right: -300px; width: 260px; height: 100%;
             background: var(--white); border-left: 2px solid var(--color5);
             transition: 0.4s; z-index: 1001; padding-top: 80px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.05);
         }
+        #sidebar.active { right: 0; }
         #sidebar a { display: block; padding: 20px 30px; color: #8a7a95; text-decoration: none; border-bottom: 1px solid #f9f0f6; cursor: pointer; }
+        #sidebar a:hover { background-color: #fdfafc; color: var(--color5); }
 
         .hidden { display: none; }
-        .back-btn { background: none; color: var(--color4); border: 1.5px solid var(--color4); padding: 8px 18px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; }
-        
-        
-        
+        .back-btn { background: none; color: var(--color4); border: 1.5px solid var(--color4); padding: 8px 18px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -139,40 +143,58 @@ body::after {
         <a onclick="showSection('home')">.✦ الرئيسية</a>
         <a onclick="showSection('morning')">⊹ ࣪ ˖ أذكار الصباح</a>
         <a onclick="showSection('evening')">࣪ ִֶָ☾. أذكار المساء</a>
-        <a onclick="showSection('sleep')">ᥫ᭡ أذكار النوم</a>
-        <a onclick="showSection('general')">★ عام</a>
+        <a onclick="showSection('sleep')">｡𖦹°‧ أذكار النوم</a>
+        <a onclick="showSection('general')"> ֺּׅ𓏽⑅المسبحة</a>
     </div>
 
     <div class="container">
+        <!-- قسم الرئيسية -->
         <section id="home">
             <div style="text-align:center; margin-bottom:45px;">
-                <h2 style="color: var(--color5);">سلامُ اللّٰه عليكُم ᥫ᭡</h2>
+                <h2 style="color: var(--color5);">سلام الله عليكم 𖹭 ֶָ֢</h2>
                 <div style="color:var(--color5)">────୨ৎ────</div>
             </div>
             
             <div class="card" onclick="showSection('morning')" style="cursor: pointer;">
                 <div class="card-header"><div class="dot"></div><div class="dot"></div></div>
-                <div class="card-body"><h3>أذكار الصباح 𑣲</h3></div>
+                <div class="card-body"><h3>أذكار الصباح ⊹ ࣪ ˖</h3></div>
             </div>
             <div class="card" onclick="showSection('evening')" style="cursor: pointer;">
                 <div class="card-header" style="background:var(--color1)"><div class="dot"></div><div class="dot"></div></div>
-                <div class="card-body"><h3>أذكار المساء ☾</h3></div>
+                <div class="card-body"><h3>أذكار المساء ִֶָ☾.</h3></div>
             </div>
             <div class="card" onclick="showSection('sleep')" style="cursor: pointer;">
                 <div class="card-header" style="background:var(--color2)"><div class="dot"></div><div class="dot"></div></div>
-                <div class="card-body"><h3>أذكار النوم ᥫ᭡</h3></div>
+                <div class="card-body"><h3>أذكار النوم ｡𖦹°‧</h3></div>
             </div>
             <div class="card" onclick="showSection('general')" style="cursor: pointer;">
                 <div class="card-header" style="background:var(--color5)"><div class="dot"></div><div class="dot"></div></div>
-                <div class="card-body"><h3>المسبحة ๋࣭ ⭑⊹</h3></div>
+                <div class="card-body"><h3>༄.°المسبحة</h3></div>
             </div>
         </section>
 
+        <!-- أذكار الصباح -->
         <section id="morning" class="hidden">
             <button class="back-btn" onclick="showSection('home')">⇒ عودة</button>
             <div class="no-border-card">
                 <p>الحمدلله و الصلاة و السلام على رسول الله وعلى آله و صحبه و من ولاه</p>
-               <div class="bow-divider">𝜗ৎ</div> 
+                <div class="bow-divider">𝜗ৎ</div> 
+            </div>
+
+            <!-- آية الكرسي -->
+            <div class="card">
+                <div class="card-header"><div class="dot"></div><div class="dot"></div></div>
+                <div class="card-body">
+                    <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem;">اللَّهُ لا إِلهَ إِلّا هُوَ الحَيُّ القَيّومُ لا تَأخُذُهُ سِنَةٌ وَلا نَومٌ لَهُ ما فِي السَّماواتِ وَما فِي الأَرضِ مَن ذَا الَّذي يَشفَعُ عِندَهُ إِلّا بِإِذنِهِ يَعلَمُ ما بَينَ أَيديهِم وَما خَلفَهُم وَلا يُحيطونَ بِشَيءٍ مِن عِلمِهِ إِلّا بِما شاءَ وَسِعَ كُرسِيُّهُ السَّماواتِ وَالأَرضَ وَلا يَئودُهُ حِفظُهُما وَهُوَ العَلِيُّ العَظيمُ</p>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 20px; background: #fdfafc; padding: 10px; border-radius: 10px;">
+                        أن مَن قرأها عندَ النومِ لا يزالُ عليه من اللهِ حافظٌ ، ولا يقربُه شيطانٌ حتى يُصبِحَ<br>
+                        <small>المحدث : ابن باز | المصدر : مجموع فتاوى ابن باز | الصفحة أو الرقم : 454/3</small>
+                    </p>
+                    <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_1">1</div>
+                    <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_1', 1)">✶</button>
+                    <button class="btn-reset" onclick="resetCounter('m_1', 1)">↺</button>
+                    <span class="more-details" onclick="openModal('حديث آية الكرسي وقصتها مع أبي هريرة والشيطان.')">تفاصيل أكثر</span>
+                </div>
             </div>
 
 <div class="card">
@@ -796,13 +818,12 @@ body::after {
 `)">تفاصيل أكثر</span>
     </div>
 </div>
-
-            </div>
         </section>
 
-        <section id="evening" class="hidden"><button class="back-btn" onclick="showSection('home')">⇒ عودة</button><p style="text-align:center;"> 
-        
-        
+        <!-- أذكار المساء -->
+        <section id="evening" class="hidden">
+            <button class="back-btn" onclick="showSection('home')">⇒ عودة</button>
+            
 <div class="card">
                 <div class="card-header"><div class="dot"></div><div class="dot"></div></div>
                 <div class="card-body">
@@ -1305,103 +1326,18 @@ body::after {
 `)">تفاصيل أكثر</span>
     </div>
 </div>
+        </section>
 
-<div class="card">
-    <div class="card-header">
-        <div class="dot"></div><div class="dot"></div>
-    </div>
-    
-    <div class="card-body">
-        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">لا إلهَ إلا اللهُ وحدَه ، لا شريكَ له ، له الملكُ ، وله الحمدُ ، وهو على كلِّ شيءٍ قديرٍ .</p>
-
-        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>من قال إذا أصبح : لا إله إلا اللهُ وحده لا شريك له ، له الملكُ وله الحمدُ ، وهو على كلِّ شيءٍ قديرٌ ، كان له عِدلُ رقبةٍ ، من ولد إسماعيلَ ، وكُتِبَتْ له بها عشرُ حسناتٍ ، وحَطَّ عنه بها عشرَ سيِّئاتٍ ، ورَفع له بها عشرَ درجاتٍ ، وكان في حِرْزٍ من الشيطانِ حتى يُمسيَ ، وإذا قالها إذا أمسى كان له مثلُ ذلك حتى يُصبِحَ
-خلاصة حكم المحدث : صحيح
-الراوي : أبو عياش الزرقي | المحدث : الألباني | المصدر : صحيح الجامع | الصفحة أو الرقم : 6418</p>
-
-        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_25">10</div>
-        
-        <!-- زر النجمة -->
-        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_25', 10)">✶</button>
-        
-        <!-- زر الإعادة الجديد (أكثر رقة) -->
-        <button class="btn-reset" onclick="resetCounter('m_25', 10)">↺</button>
-
-        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`مَن قال إذا أصبحَ : لا إلهَ إلا اللهُ وحدَه ، لا شريكَ له ، له الملكُ ، وله الحمدُ ، وهو على كلِّ شيءٍ قديرٍ ؛ كان له عدلُ رقبةٍ مِن ولدِ إسماعيلَ ، وكتب له عشرَ حسناتٍ ، وحطَّ عنه عشرَ سيئاتٍ ، ورفع له عشرَ درجاتٍ ، وكان في حِرْزٍ مِن الشيطانِ حتى يُمسي . وإن قالها إذا أمسى كان له مثلُ ذلك حينَ يُصبحُ .
-الراوي : أبو عياش الزرقي | المحدث : الألباني | المصدر : صحيح أبي داود
-الصفحة أو الرقم: 5077 | خلاصة حكم المحدث : صحيح
-التخريج : أخرجه أبو داود (5077) واللفظ له، والنسائي في ((السنن الكبرى)) (9855)، وابن ماجه (3867)، وأحمد (16583)`)">تفاصيل أكثر</span>
-    </div>
+        <!-- أذكار النوم -->
+        <section id="sleep" class="hidden">
+            <button class="back-btn" onclick="showSection('home')">⇒ عودة</button>
+            <div class="card">
+                <div class="card-header">
+              
+<div class="dot"></div>
+<div class="dot"></div>
 </div>
 
-<div class="card">
-    <div class="card-header">
-        <div class="dot"></div><div class="dot"></div>
-    </div>
-    
-    <div class="card-body">
-        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللهم صلِ و سلم و بارك على نبينا محمد</p>
-
-        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>روى الطبراني عن أبي الدرداء رضي الله عنه، قال: قال رسول الله - صلى الله عليه وسلم -: "من صلى علي حين يصبح عشرًا، وحين يمسي عشرًا أدركته شفاعتي يوم القيامة".</p>
-
-        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_24">10</div>
-        
-        <!-- زر النجمة -->
-        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_24', 10)">✶</button>
-        
-        <!-- زر الإعادة الجديد (أكثر رقة) -->
-        <button class="btn-reset" onclick="resetCounter('m_24', 10)">↺</button>
-
-        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`روى الترمذي عَنْ أَبِي هُرَيْرَةَ، عَنِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: مَا جَلَسَ قَوْمٌ مَجْلِسًا لَمْ يَذْكُرُوا اللَّهَ فِيهِ، وَلَمْ يُصَلُّوا عَلَى نَبِيِّهِمْ، إِلَّا كَانَ عَلَيْهِمْ تِرَةً، فَإِنْ شَاءَ عَذَّبَهُمْ وَإِنْ شَاءَ غَفَرَ لَهُمْ. وقوله (ترة) أي حسرة وندامة.
-        
-         ما مِن أحدٍ يسلِّمُ عليَّ إلَّا ردَّ اللَّهُ عليَّ روحي حتَّى أردَّ علَيهِ السَّلامَ
-خلاصة حكم المحدث : حسن
-الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 2041
-| التخريج : أخرجه أبو داود (2041) واللفظ له، وأحمد (10815)
-
-لا تجعلوا بيوتَكُم قبورًا، ولا تجعلوا قَبري عيدًا، وصلُّوا عليَّ فإنَّ صلاتَكُم تبلغُني حَيثُ كنتُمْ
-خلاصة حكم المحدث : صحيح
-الراوي : أبو هريرة | المحدث : الألباني | المصدر : صحيح أبي داود | الصفحة أو الرقم : 2042
-| التخريج : أخرجه أبو داود (2042) واللفظ له، وأحمد (8790)
-
-`)">تفاصيل أكثر</span>
-    </div>
-</div>
-
-        
-        </p></section>
-        <section id="sleep" class="hidden"><button class="back-btn" onclick="showSection('home')">⇒ عودة</button><p style="text-align:center;">
-          
-          <div class="card">
-    <div class="card-header">
-        <div class="dot"></div><div class="dot"></div>
-    </div>
-    
-    <div class="card-body">
-        <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">بِاسْمِكَ رَبِّـي وَضَعْـتُ جَنْـبي ، وَبِكَ أَرْفَعُـه، فَإِن أَمْسَـكْتَ نَفْسـي فارْحَـمْها ، وَإِنْ أَرْسَلْتَـها فاحْفَظْـها بِمـا تَحْفَـظُ بِه عِبـادَكَ الصّـالِحـين.</p>
-
-        <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px; background: #fdfafc; padding: 12px; border-radius: 10px; white-space: pre-line; line-height: 1.5;"><b>الوصف:</b>إذا أوى أحَدُكُم إلى فِراشِه فليَنفُضْ فِراشَه بداخِلةِ إزارِه؛ فإنَّه لا يَدري ما خَلَفَه عليه، ثُمَّ يقولُ: باسمِك رَبِّ وضَعتُ جَنبي، وبك أرفَعُه، إن أمسَكتَ نَفسي فارحَمها، وإن أرسَلتَها فاحفَظْها بما تَحفَظُ به عِبادَك الصَّالِحينَ.
-الراوي : أبو هريرة | المحدث : البخاري | المصدر : صحيح البخاري
-الصفحة أو الرقم: 6320  </p>
-
-        <div style="font-size: 4rem; font-weight: bold; color: var(--color2); margin: 15px 0; text-shadow: 0 0 10px #C6B9F0;" id="m_a">1</div>
-        
-        <!-- زر النجمة -->
-        <button class="btn-count" style="font-size: 1.6rem; display: flex; align-items: center; justify-content: center;" onclick="countdown('m_a', 1)">✶</button>
-        
-        <!-- زر الإعادة الجديد (أكثر رقة) -->
-        <button class="btn-reset" onclick="resetCounter('m_a', 1)">↺</button>
-
-        <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`إذا أوى أحَدُكُم إلى فِراشِه فليَأخُذْ داخِلةَ إزارِه، فليَنفُضْ بها فِراشَه، وليُسَمِّ اللهَ؛ فإنَّه لا يَعلَمُ ما خَلَفَه بَعدَه على فِراشِه، فإذا أرادَ أن يَضطَجِعَ فليَضطَجِعْ على شِقِّه الأيمَنِ، وليَقُلْ: سُبحانَكَ اللَّهمَّ رَبِّي بكَ وضَعتُ جَنبي، وبكَ أرفَعُه، إن أمسَكتَ نَفسي فاغفِرْ لَها، وإن أرسَلتَها فاحفَظْها بما تَحفَظُ به عِبادَكَ الصَّالِحينَ. وفي روايةٍ: بهذا الإسنادِ، وقال: ثُمَّ ليَقُلْ: باسمِكَ رَبِّي وضَعتُ جَنبي، فإن أحيَيتَ نَفسي فارحَمْها.
-خلاصة حكم المحدث : [صحيح]
-الراوي : أبو هريرة | المحدث : مسلم | المصدر : صحيح مسلم | الصفحة أو الرقم : 2714`)">تفاصيل أكثر</span>
-    </div>
-</div>
-
-         <div class="card">
-    <div class="card-header">
-        <div class="dot"></div><div class="dot"></div>
-    </div>
-    
     <div class="card-body">
         <p style="line-height: 1.8; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">اللّهُـمَّ أنـت خَلَـقْتَ نَفْسـي وَأَنْـتَ تَوَفّـاهـا لَكَ ممَـاتـها وَمَحْـياها ، إِنْ أَحْيَيْـتَها فاحْفَظْـها ، وَإِنْ أَمَتَّـها فَاغْفِـرْ لَـها . اللّهُـمَّ إِنَّـي أَسْـأَلُـكَ العـافِـيَة.
 </p>
@@ -1424,7 +1360,8 @@ body::after {
 
 `)">تفاصيل أكثر</span>
     </div>
-</div>
+
+          </div>
 
           <div class="card">
     <div class="card-header">
@@ -1611,80 +1548,109 @@ body::after {
 
         <span class="more-details" style="display: block; margin-top: 20px; color: var(--color1); cursor: pointer; text-decoration: underline; font-size: 0.85rem;" onclick="openModal(`...`)">تفاصيل أكثر</span>
     </div>
-</div>
+</div>  
+        </section>
 
-
-        </p></section>
+        <!-- المسبحة -->
         <section id="general" class="hidden">
             <button class="back-btn" onclick="showSection('home')">⇒ عودة</button>
             <div class="card">
+                <div class="card-header" style="background:var(--color5)"><div class="dot"></div><div class="dot"></div></div>
                 <div class="card-body">
-                    <div style="font-size: 3.5rem; font-weight: bold; color: var(--color5); margin-bottom: 15px;" id="g_count">0</div>
-                    <button class="btn-count" style="background:var(--color5); box-shadow:0 5px 0 #d8a3c2" onclick="countup('g_count')">  ❤︎</button>
-                    <button class="btn-reset" onclick="resetCounter('g_count', 0)">تصفير ִーָ☾.</button>
+                    <h3 style="color: var(--color5); margin-bottom: 10px;">المسبحة الإلكترونية</h3>
+                    <div style="font-size: 5rem; font-weight: bold; color: var(--color5); margin: 20px 0;" id="g_counter">0</div>
+                    <button class="btn-count" style="background-color: var(--color5); box-shadow: 0 5px 0px #e09ebd;" onclick="incrementCounter('g_counter')"> ✶</button>
+                    <button class="btn-reset" style="border-color: var(--color5); color: var(--color5);" onclick="resetGeneralCounter('g_counter')">إعادة ضبط ↺</button>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- نافذة التفاصيل -->
-    <div id="myModal" class="modal">
+    <!-- نافذة التفاصيل Modal -->
+    <div id="detailsModal" class="modal">
         <div class="modal-window">
             <div class="modal-header">
-                <div class="dot"></div><div class="dot"></div>
-                <div style="margin-right: auto; color: white; font-size: 1rem; cursor: pointer; font-weight: bold;" onclick="closeModal()">✕</div>
+                <span>تفاصيل الأثر والحديث</span>
+                <span class="close-modal" onclick="closeModal()">✕</span>
             </div>
-            <div class="modal-body" id="modalText"></div>
-            <div style="padding: 15px; text-align: center; border-top: 1px solid #f9f0f6;">
-                <button class="btn-reset" style="margin-top: 0;" onclick="closeModal()">إغلاق . ̊</button>
-            </div>
+            <div class="modal-body" id="modalContent"></div>
         </div>
     </div>
 
-<script>
-    function toggleMenu() {
-        const side = document.getElementById('sidebar');
-        side.style.right = side.style.right === '0px' ? '-300px' : '0px';
-    }
-
-    function showSection(id) {
-        document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-        document.getElementById(id).classList.remove('hidden');
-        if(document.getElementById('sidebar').style.right === '0px') toggleMenu();
-        window.scrollTo(0,0);
-    }
-
-    function countdown(id, startVal) {
-        const el = document.getElementById(id);
-        let val = parseInt(el.innerText);
-        if (val > 0) {
-            val--;
-            el.innerText = val; // تحديث الشاشة فقط
-            if (val === 0) setTimeout(() => { alert("تم الانتهاء ᥫ᭡"); }, 100);
-        } else {
-            el.innerText = startVal;
+    <script>
+        // التحكم بالقائمة الجانبية
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
         }
-    }
 
-    function countup(id) {
-        const el = document.getElementById(id);
-        el.innerText = parseInt(el.innerText) + 1;
-    }
+        // التنقل بين الأقسام
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.container > section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+            
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
 
-    function resetCounter(id, val) {
-        document.getElementById(id).innerText = val;
-    }
+            // إغلاق القائمة عند الاختيار
+            document.getElementById('sidebar').classList.remove('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-    function openModal(text) {
-        document.getElementById('modalText').innerText = text;
-        document.getElementById('myModal').style.display = "block";
-    }
+        // العد التنازلي للأذكار
+        function countdown(elementId, initialValue) {
+            const el = document.getElementById(elementId);
+            let current = parseInt(el.innerText, 10);
+            if (isNaN(current)) current = initialValue;
 
-    function closeModal() {
-        document.getElementById('myModal').style.display = "none";
-    }
+            if (current > 0) {
+                current--;
+                el.innerText = current;
+            }
+        }
 
-    window.onclick = function(e) { if (e.target.id == 'myModal') closeModal(); }
-</script>
+        // إعادة ضبط العداد المحدد
+        function resetCounter(elementId, defaultValue) {
+            const el = document.getElementById(elementId);
+            if (el) {
+                el.innerText = defaultValue;
+            }
+        }
+
+        // المسبحة المفتوحة (عد تصاعدي)
+        function incrementCounter(elementId) {
+            const el = document.getElementById(elementId);
+            let current = parseInt(el.innerText, 10);
+            if (isNaN(current)) current = 0;
+            el.innerText = current + 1;
+        }
+
+        function resetGeneralCounter(elementId) {
+            const el = document.getElementById(elementId);
+            if (el) el.innerText = 0;
+        }
+
+        // النافذة المنبثقة للتفاصيل
+        function openModal(content) {
+            const modal = document.getElementById('detailsModal');
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerText = content;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('detailsModal').style.display = 'none';
+        }
+
+        // إغلاق النافذة المنبثقة عند الضغط خارجها
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailsModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>

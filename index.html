@@ -35,7 +35,10 @@
             display: flex; align-items: center; justify-content: space-between;
             padding: 15px 30px; position: fixed; top: 0; width: 100%; z-index: 1000;
             box-sizing: border-box; border-bottom: 1.5px solid var(--color5);
+            
         }
+
+
 
         .site-title { font-size: 1.7rem; font-weight: bold; color: var(--color5); letter-spacing: 2px; }
 
@@ -130,12 +133,60 @@
 
         .hidden { display: none; }
         .back-btn { background: none; color: var(--color4); border: 1.5px solid var(--color4); padding: 8px 18px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; font-weight: bold; }
+        
+        /* زر التبديل */
+.dark-mode-toggle {
+    background: none;
+    border: 1.5px solid var(--color5);
+    color: var(--color5);
+    border-radius: 12px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* الألوان الخاصة بالوضع الداكن */
+body.dark-mode {
+    background-color: #1a1625;
+    color: #e2d9eb;
+    background-image: radial-gradient(#2d243b 1px, transparent 1px);
+}
+
+body.dark-mode .top-bar {
+    background-color: rgba(26, 22, 37, 0.9);
+    border-bottom-color: var(--color1);
+}
+
+body.dark-mode .card {
+    background-color: #252033;
+    border-color: #3b324d;
+    box-shadow: 8px 8px 0px #352847;
+}
+
+body.dark-mode #sidebar {
+    background-color: #252033;
+    border-left-color: #3b324d;
+}
+
+body.dark-mode #sidebar a {
+    color: #e2d9eb;
+    border-bottom-color: #3b324d;
+}
+
+body.dark-mode .modal-window {
+    background-color: #252033;
+    color: #e2d9eb;
+}
+
+        
     </style>
 </head>
 <body>
 
     <div class="top-bar">
         <div class="site-title">ᯓ★ ذكِر</div>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">☾ / ☀</button>
         <div style="cursor:pointer; font-size: 24px; color: var(--color5);" onclick="toggleMenu()">𝜗ৎ</div>
     </div>
 
@@ -1651,6 +1702,10 @@
                 closeModal();
             }
         }
+        function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+}
+
     </script>
 </body>
 </html>
